@@ -1,4 +1,4 @@
-package application;
+package roster;
 
 public class SalesAsso extends Employee {
 	
@@ -9,4 +9,6 @@ public class SalesAsso extends Employee {
 		this.getLoginInfo().changePermission(1);
 
 	}
+	
+	public SalesAsso() {}
 }

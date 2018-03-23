@@ -1,4 +1,4 @@
-package application;
+package roster;
 
 public class WHMan extends Employee {
 
@@ -8,5 +8,7 @@ public class WHMan extends Employee {
 		
 		this.getLoginInfo().changePermission(3);
 	}
+	
+	public WHMan() {}
 
 }

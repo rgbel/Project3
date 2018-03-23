@@ -17,6 +17,7 @@ public abstract class Employee {
         this.email = email;
         this.loginInfo = loginInfo;
     }
+    public Employee() {}
 
     public void setNameFirst(String nameFirst){  this.nameFirst = nameFirst;  }
     public String getNameFirst(){  return nameFirst;  }

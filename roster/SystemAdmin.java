@@ -6,5 +6,7 @@ public class SystemAdmin extends Employee{
 		super(nameFirst, nameLast, phoneNumber, email, loginInfo);
 		this.getLoginInfo().changePermission(0);
 	}
+	
+	public SystemAdmin() {}
 
 }

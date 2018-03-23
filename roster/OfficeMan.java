@@ -1,4 +1,4 @@
-package application;
+package roster;
 
 public class OfficeMan extends Employee {
 	
@@ -9,5 +9,7 @@ public class OfficeMan extends Employee {
 		this.getLoginInfo().changePermission(2);
 
 	}
+	
+	public OfficeMan() {}
 
 }
