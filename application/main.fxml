@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <center>
+      <TabPane prefHeight="400.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Search or Sell">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text layoutX="98.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search or Sell:" textAlignment="CENTER" wrappingWidth="204.38232421875">
+                           <font>
+                              <Font name="Freestyle Script" size="40.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="36.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name/Number:">
+                           <font>
+                              <Font name="Ebrima" size="18.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="searchSellInput" layoutX="196.0" layoutY="74.0" prefHeight="28.0" prefWidth="159.0" promptText="Name for search; ID for sell">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </TextField>
+                        <RadioButton fx:id="searchRadio" layoutX="103.0" layoutY="124.0" mnemonicParsing="false" selected="true" text="Search">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="searchSell" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="sellRadio" layoutX="235.0" layoutY="124.0" mnemonicParsing="false" text="Sell" toggleGroup="$searchSell" />
+                        <Button fx:id="SSButton" layoutX="78.0" layoutY="161.0" mnemonicParsing="false" onAction="#decideSearchOrSell" opacity="0.29" prefHeight="50.0" prefWidth="244.0" text="Start" textAlignment="CENTER">
+                           <font>
+                              <Font name="Ebrima" size="18.0" />
+                           </font>
+                        </Button>
+                        <TextArea fx:id="SSTB" layoutX="18.0" layoutY="232.0" prefHeight="125.0" prefWidth="370.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Update or Move">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text layoutX="98.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update or Move" textAlignment="CENTER" wrappingWidth="204.38232421875">
+                           <font>
+                              <Font name="Freestyle Script" size="41.0" />
+                           </font>
+                        </Text>
+                        <RadioButton fx:id="updateRadio" layoutX="98.0" layoutY="75.0" mnemonicParsing="false" selected="true" text="Update">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="updateMove" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="moveRadio" layoutX="243.0" layoutY="75.0" mnemonicParsing="false" text="Move" toggleGroup="$updateMove" />
+                        <Button fx:id="UMButton" layoutX="78.0" layoutY="109.0" mnemonicParsing="false" onAction="#decideUpdateOrMove" opacity="0.29" prefHeight="50.0" prefWidth="244.0" text="Start" textAlignment="CENTER">
+                           <font>
+                              <Font name="Ebrima" size="18.0" />
+                           </font>
+                        </Button>
+                        <TextArea fx:id="UMTB" layoutX="17.0" layoutY="173.0" prefHeight="184.0" prefWidth="371.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Create New...">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text layoutX="55.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:">
+                           <font>
+                              <Font name="Ebrima" size="18.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="vanPartInput" layoutX="200.0" layoutY="19.0" prefHeight="28.0" prefWidth="159.0" promptText="sampleName...">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </TextField>
+                        <Text layoutX="129.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a new..." textAlignment="CENTER">
+                           <font>
+                              <Font name="Freestyle Script" size="35.0" />
+                           </font>
+                        </Text>
+                        <RadioButton fx:id="vanRadio" layoutX="97.0" layoutY="119.0" mnemonicParsing="false" selected="true" text="Van">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="vanPart" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="partRadio" layoutX="228.0" layoutY="119.0" mnemonicParsing="false" text="Part" toggleGroup="$vanPart" />
+                        <Button fx:id="VPButton" layoutX="78.0" layoutY="161.0" mnemonicParsing="false" onAction="#decideVanOrPart" opacity="0.29" prefHeight="50.0" prefWidth="244.0" text="Start" textAlignment="CENTER">
+                           <font>
+                              <Font name="Ebrima" size="18.0" />
+                           </font>
+                        </Button>
+                        <TextArea fx:id="VPTB" layoutX="15.0" layoutY="235.0" prefHeight="122.0" prefWidth="371.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Sort">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text layoutX="90.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sort:">
+                           <font>
+                              <Font name="Ebrima" size="18.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="sortInput" layoutX="192.0" layoutY="20.0" prefHeight="28.0" prefWidth="159.0" promptText="Enter all, or a specific warehouse">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </TextField>
+                        <Text layoutX="154.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sort by..." textAlignment="CENTER">
+                           <font>
+                              <Font name="Freestyle Script" size="35.0" />
+                           </font>
+                        </Text>
+                        <RadioButton fx:id="numButton" layoutX="226.0" layoutY="124.0" mnemonicParsing="false" text="Numerical">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="sortGroup" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="alphaButton" layoutX="90.0" layoutY="124.0" mnemonicParsing="false" selected="true" text="Alphabetical" toggleGroup="$sortGroup" />
+                        <Button fx:id="SortButton" layoutX="78.0" layoutY="161.0" mnemonicParsing="false" onAction="#decideAlphaOrNum" opacity="0.29" prefHeight="50.0" prefWidth="244.0" text="Start" textAlignment="CENTER">
+                           <font>
+                              <Font name="Ebrima" size="18.0" />
+                           </font>
+                        </Button>
+                        <TextArea fx:id="SortTB" layoutX="15.0" layoutY="235.0" prefHeight="122.0" prefWidth="371.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
