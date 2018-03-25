@@ -5,10 +5,13 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import application.Main;
+import application.BikePart;
+
 /**
  * EmployeeRoster keeps a running register of all employees created. Different types of Employees can be stored as long as they use the abstract Employee class.
  * 
- * @author mattpess
+ * @author 
  * Last updated 3/23/18
  */
 public class EmployeeRoster {
@@ -41,7 +44,7 @@ public class EmployeeRoster {
 				newest = new SystemAdmin(info[0],info[1],info[2],info[3], new LoginAccount(info[4],info[5],Integer.parseInt(info[6])));
 			}
 			else {
-				newest = new SystemAdmin("John","Doe","540=540-540","admin@bikeparts.org",new LoginAccount("admin","minda",0));
+				newest = new SystemAdmin("John","Doe","123-540-6789","admin@bikeparts.org",new LoginAccount("admin","minda",0));
 				register.roster.add(newest);
 				return register;
 			}
@@ -56,7 +59,41 @@ public class EmployeeRoster {
 				} else if (info[6].equals("3")) {
 					newest = parseLineToEmployee(info, new WHMan());
 				} else if (info[6].equals("1")) {
-					
+					lastSA = new SalesAsso();
+					lastSA.setNameFirst(info[0]);
+					lastSA.setNameLast(info[1]);
+					lastSA.setPhoneNumber(info[2]);
+					lastSA.setEmail(info[3]);
+					lastSA.setLoginInfo(new LoginAccount(info[4],info[5],Integer.parseInt(info[6])));
+					lastSA.setVan(Main.programFleet.getFleet().get(Main.programFleet.isWarehouse(info[7])));
+					// *,customerStore,customerEmployee,SaleDate
+					// **,partName,partNum,partListPrice,partSalesPrice,partOnSale,partQuan
+					// ..
+					// *,...
+					// *** signifies the end of the invoices
+					boolean firstLoop = true;
+					SalesInvoice activeInvoice = new SalesInvoice();
+					while(in.hasNextLine()) {
+						info = in.nextLine().split(",");
+						if(firstLoop) {
+							if(info[0] == "*"){
+								activeInvoice = new SalesInvoice(info[1],info[2],new ArrayList<BikePart>(),lastSA, Long.parseLong(info[3]));
+								firstLoop = false;
+							}
+							// else, ***, exit loop
+							else {
+								break;
+							}
+						}
+						else if(info[0] == "*") {
+							lastSA.addInvoice(activeInvoice);
+							activeInvoice = new SalesInvoice(info[1],info[2],new ArrayList<BikePart>(),lastSA, Long.parseLong(info[3]));
+						}
+						else if(info[0] == "**") {
+							//Add part to activeInvoice
+						} else { break; }
+						
+					}
 				}
 				register.roster.add(newest);
 			}
