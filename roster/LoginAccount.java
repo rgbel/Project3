@@ -25,6 +25,7 @@ public class LoginAccount {
 		return false;
 		
 	}
+	public String getPassword() { return password; }
 	
 	public boolean confirmUsername(String attemptUsername) { return(attemptUsername.equals(this.username)); }
 	public boolean confirmPassword(String attemptPassword) { return(attemptPassword.equals(this.password)); }
@@ -44,5 +45,5 @@ public class LoginAccount {
 		}
 		return false;
 	}
-
+	
 }

@@ -57,6 +57,24 @@ public class SalesInvoice {
 		output += ("Received by: " + this.customerReceived);
 		return output;
 	}
+	/**
+	 * This method returns a condensed version of the toString() method.
+	 * This will not be as human-readable as toString(), but is best for most efficient data storage.
+	 * @return An ArrayList with index 0 containing the information about the invoice itself, and the remaining indices containing information about BikeParts.
+	 */
+	public ArrayList<String> toStringCondensed() {
+		//Intended end format:
+		//customerStore,customerEmployee,SaleDate
+		//partName,partNum,partListPrice,partSalesPrice,partOnSale,partQuan
+		//...
+		ArrayList<String> output = new ArrayList<String>();
+		output.add(this.customerStore + "," + this.customerReceived + "," + this.sellDate.getTime());
+		for(BikePart part : this.partsSold) {
+			output.add(part.getAll());
+		}
+		return output;
+		
+	}
 	
 	public double getProfit() {
 		double commission = 0;
@@ -64,6 +82,9 @@ public class SalesInvoice {
 			commission += tempPart.getTotalCost();
 		}
 		return commission;
+	}
+	public void addPart(BikePart newPart) {
+		partsSold.add(newPart);
 	}
 	
 	

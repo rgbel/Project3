@@ -15,6 +15,7 @@ public class SalesAsso extends Employee {
 		super(nameFirst, nameLast, phoneNumber, email, loginInfo);
 		this.van = van;
 		this.getLoginInfo().changePermission(1);
+		invoices = new ArrayList<SalesInvoice>();
 
 	}
 	
@@ -23,7 +24,7 @@ public class SalesAsso extends Employee {
 	public Warehouse getVan() { return van; }
 	public void setVan(Warehouse van) { this.van = van; }
 	
-	public void addInvoice(SalesInvoice newInvoice) { this.invoices.add(newInvoice); }
+	public void addInvoice(SalesInvoice newInvoice) { invoices.add(newInvoice); }
 	public ArrayList<SalesInvoice> getInvoices() { return invoices; }
 	
 	public ArrayList<SalesInvoice> getDatesBetween(Date start, Date end){

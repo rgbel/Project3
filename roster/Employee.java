@@ -33,5 +33,12 @@ public abstract class Employee {
 
     public void setLoginInfo(LoginAccount loginInfo){  this.loginInfo = loginInfo;  }
     public LoginAccount getLoginInfo(){  return loginInfo;  }
+    
+    /**
+     * Returns all fields of the employee formatted for placement in a file.
+     */
+    public String getAll() {
+    	return(nameFirst + "," + nameLast + "," + phoneNumber + "," + email + "," + loginInfo.getUsername() + "," + loginInfo.getPassword() + "," + loginInfo.getPermission());	
+    }
 
 }
