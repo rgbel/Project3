@@ -608,4 +608,7 @@ public class BikePart extends Part {
 	public static void main(String[] args) {
 		startup();
 	}*/
+	public double getTotalCost() {
+		return (this.getActivePrice() * this.stock);
+	}
 }
