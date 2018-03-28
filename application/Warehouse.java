@@ -72,6 +72,7 @@ public class Warehouse {
 				if (Pattern.matches("\\w*,\\d*,\\d*.\\d*,\\d*.\\d*,false,\\d*", bpLine) || Pattern.matches("\\w*,\\d*,\\d*.\\d*,\\d*.\\d*,true,\\d*", bpLine)){
 					// .split creates an array of Strings that is divided each time you encounter a certain character or String (comma, in our case)
 					String[] partData = bpLine.split(",");
+
 					//System.out.println(partData[4]);
 					// BikePart would not let us properly parse Strings as other variable types when using the original constructor
 					// Thus, we created the empty constructor and added in the values one at a time to solve this issue.
@@ -118,6 +119,18 @@ public class Warehouse {
 		}
 		return null; 
 	}
+	
+		public int getPart(String name2) {
+		int FOUNDINDEX = -1;
+		for (int i = 0; i < this.partInventory.size(); i++) {
+			if(this.partInventory.get(i).getName().equals(name2)) {
+				FOUNDINDEX = i;
+				break;
+			}
+		} // done searching
+		return FOUNDINDEX; //only if part is found
+	} //getPart
+	
 	
 }
 
