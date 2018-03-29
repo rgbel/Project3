@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
-public class Warehouse implements Serializabal{
+public class Warehouse implements Serializable {
 	
 	String name;
 	ArrayList<BikePart> partInventory = new ArrayList<BikePart>();
