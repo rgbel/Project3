@@ -3,6 +3,7 @@ import java.io.File;
 import java.util.Date;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.io.FileNotFoundException;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
-public class Warehouse {
+public class Warehouse implements Serializabal{
 	
 	String name;
 	ArrayList<BikePart> partInventory = new ArrayList<BikePart>();
