@@ -3,6 +3,7 @@ import java.io.File;
 import java.util.Date;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.io.FileNotFoundException;
@@ -15,7 +16,7 @@ import java.util.regex.Pattern;
  * @author Matthew Pessolano
  *
  */
-public class WarehouseFleet {
+public class WarehouseFleet implements Serializable {
 	
 	ArrayList<Warehouse> fleet;
 	
