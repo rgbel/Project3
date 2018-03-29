@@ -3,13 +3,9 @@ package roster;
 
 
 import java.io.File;
-
 import java.io.FileNotFoundException;
-
 import java.io.FileWriter;
-
 import java.io.IOException;
-
 import java.util.ArrayList;
 
 import java.util.Date;
@@ -79,15 +75,13 @@ public ArrayList<Employee> getRoster() { return roster; }
 			while(in.hasNextLine()) {
 				//nameFirst,nameLast,phoneNumber,email,username,password,permissionLevel
 				info = in.nextLine().split(",");
-				switch(info[6]) {
-				case "0":
+				if(info[6].equals("0"))
 					register.add(new SystemAdmin(info[0],info[1],info[2],info[3], new LoginAccount(info[4],info[5],Integer.parseInt(info[6]))));
-				case "2":
+				else if(info[6].equals("2"))
 					register.add(new OfficeMan(info[0],info[1],info[2],info[3], new LoginAccount(info[4],info[5],Integer.parseInt(info[6]))));
-				case "3":
+				else if(info[6].equals("3"))
 					register.add(new WHMan(info[0],info[1],info[2],info[3], new LoginAccount(info[4],info[5],Integer.parseInt(info[6]))));
 				}
-			}
 			in = new Scanner(assoFile);
 			int index = -1;
 			SalesAsso lastSA = new SalesAsso();
@@ -348,7 +342,6 @@ public ArrayList<Employee> getRoster() { return roster; }
 			assoWriter = new FileWriter("associateDB.txt");
 			for(Employee loop : this.roster) {
 				if(loop.getLoginInfo().getPermission() != 1) {
-					System.out.println("not 1");
 					empWriter.write(loop.getAll() + "\n");
 				} else {
 					/*System.out.println("A 1");
