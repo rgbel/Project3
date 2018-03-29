@@ -1,9 +1,10 @@
-package application;
+implements Serializablepackage application;
 
 import java.io.File;
 import java.util.Date;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.io.FileNotFoundException;
@@ -19,7 +20,7 @@ import javax.swing.JOptionPane;
  * @version - 1.2 on 2/9/2018
  */
 
-public class BikePart extends Part {
+public class BikePart extends Part implements Serializable{
 	
 	// Creating object variables to store for each BikePart read in
 	
