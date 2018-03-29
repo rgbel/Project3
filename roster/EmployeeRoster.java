@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import java.util.Date;
@@ -34,7 +35,7 @@ import application.BikePart;
 
  */
 
-public class EmployeeRoster {
+public class EmployeeRoster implements Serializable{
 
 	
 
