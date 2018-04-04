@@ -21,7 +21,7 @@ public class Warehouse implements Serializable {
 	 * @param iname
 	 * @param ipartInventory
 	 */
-	public Warehouse(String iname, ArrayList<BikePart> ipartInventory){
+	public Warehouse(String iname, ArrayList<BikePart> ipartInventory) {
 		name = iname;
 		partInventory = ipartInventory;
 	}
@@ -73,7 +73,6 @@ public class Warehouse implements Serializable {
 				if (Pattern.matches("\\w*,\\d*,\\d*.\\d*,\\d*.\\d*,false,\\d*", bpLine) || Pattern.matches("\\w*,\\d*,\\d*.\\d*,\\d*.\\d*,true,\\d*", bpLine)){
 					// .split creates an array of Strings that is divided each time you encounter a certain character or String (comma, in our case)
 					String[] partData = bpLine.split(",");
-
 					//System.out.println(partData[4]);
 					// BikePart would not let us properly parse Strings as other variable types when using the original constructor
 					// Thus, we created the empty constructor and added in the values one at a time to solve this issue.
@@ -88,6 +87,7 @@ public class Warehouse implements Serializable {
 					fileList.add(tempPart);
 				}
 			}
+			bikeScanner.close(); //added 3/29
 
 
 		} catch (FileNotFoundException e) {
@@ -121,7 +121,47 @@ public class Warehouse implements Serializable {
 		return null; 
 	}
 	
-		public int getPart(String name2) {
+	/**
+	 * 
+	 * @param name2
+	 * @return
+	 */
+	
+	
+	/**
+	 * 		int foundINDEX = -1;
+		for (int y=0; y<Dest_array.size(); y++) {
+			if (Dest_array.get(y).getPartName().equals(partname)) {
+				// found it
+				foundINDEX = y;
+				break;
+			}
+		} // done searching
+		
+		if (foundINDEX<0) {
+			//  We did not find it in the dest, need to add it
+			
+			String[] sa = Source_array.get(i).toString().split(",");										
+			String partName = sa[0];
+			int partNumber = Integer.parseInt(sa[1]);
+			double listPrice = Double.parseDouble(sa[2]);
+			double salesPrice = Double.parseDouble(sa[3]);
+			boolean onSale = Boolean.parseBoolean(sa[4]);
+			int quantity = Integer.parseInt(sa[5]);
+			
+			BikePart tempx = new BikePart(partName, partNumber, listPrice, salesPrice, onSale,
+					quantity);											
+			
+			tempx.SetQuantity(partquantity); // since the subtract worked
+			Dest_array.add(tempx);
+		} else {
+			// we DID find it, we need to change it
+			boolean adderror; //int > 2.14 billion
+			adderror = Dest_array.get(foundINDEX).ChangeQuantity(partquantity);											
+		}
+	 */
+	
+	public int getPart(String name2) {
 		int FOUNDINDEX = -1;
 		for (int i = 0; i < this.partInventory.size(); i++) {
 			if(this.partInventory.get(i).getName().equals(name2)) {
@@ -131,7 +171,6 @@ public class Warehouse implements Serializable {
 		} // done searching
 		return FOUNDINDEX; //only if part is found
 	} //getPart
-	
 	
 }
 

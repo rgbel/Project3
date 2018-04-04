@@ -12,7 +12,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 
@@ -25,6 +29,9 @@ public class Main extends Application {
 	//This allows for the databaseFile to be internally modified without having to search for all instances of it.
 
 	public static final String databaseFile = "warehouseDB.txt";
+	
+
+	public static EmployeesAndWarehouses whf = new EmployeesAndWarehouses(); //newdhjkwfh 
 
 	public static WarehouseFleet programFleet = new WarehouseFleet(WarehouseFleet.fileToFleet(databaseFile));
 
@@ -36,7 +43,7 @@ public class Main extends Application {
 
 			primaryStage.setTitle("Bike Parts Distributorship");
 
-			TabPane root = (TabPane)FXMLLoader.load(getClass().getResource("bikemenu.fxml")); //.....
+			TabPane root = (TabPane)FXMLLoader.load(getClass().getResource("bikemenu.fxml"));
 
 			Scene scene = new Scene(root,600,400);
 
@@ -47,8 +54,6 @@ public class Main extends Application {
 			primaryStage.show();
 
 			Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-
-
 
 			        public void run() {
 
@@ -66,23 +71,41 @@ public class Main extends Application {
 
 	}
 
+//warehouse and employess
+   @Override
+   public void stop() throws FileNotFoundException, IOException {
+      System.out.println("Stage is closing");
+      // Save warehouse DB
+      ObjectOutputStream oos = null;
+      FileOutputStream fout = null;
+      try{
+         fout = new FileOutputStream("project3.ser", false);
+         oos = new ObjectOutputStream(fout);
+         oos.writeObject(whf); //...
+         System.out.println("project3.ser written");
+      } 
+      catch (Exception e) {
+         e.printStackTrace();
+      } 
+      finally {
+         if(oos != null){
+            oos.close();
+         }
+      }
+   
+   }
 
-
-	public static void main(String[] args) {
-
-		launch(args);
+	public static void main(String[] args) throws IOException {
 		
-		
-		/**
-		 *  File f = new File("project2.ser");
+		File f = new File("project3.ser");
       if(f.exists() && !f.isDirectory()) {
-         System.out.println("Using serializable file, project2.ser.");
+         System.out.println("Using serializable file, project3.ser.");
          ObjectInputStream objectinputstream = null;
          FileInputStream streamIn = null;
          try {
-            streamIn = new FileInputStream("project2.ser");
+            streamIn = new FileInputStream("project3.ser");
             objectinputstream = new ObjectInputStream(streamIn);
-            whf = (WareHouseFactory) objectinputstream.readObject();
+            whf = (EmployeesAndWarehouses) objectinputstream.readObject();
          } 
          catch (Exception e) {
             e.printStackTrace();
@@ -94,11 +117,11 @@ public class Main extends Application {
          }
       }
       else {
-         System.out.println("project2.ser not found");
+         System.out.println("project3.ser not found");
       }
-      launch(args);
-		 */
 
+
+		launch(args);
 	}
 
 }
