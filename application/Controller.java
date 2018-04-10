@@ -13,6 +13,7 @@ import javafx.stage.FileChooser;
 import roster.*;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Optional;
 
 import application.Main.*;
@@ -466,12 +467,22 @@ public class Controller {
 
     @FXML
     void SortNameParts(ActionEvent event) {
-
+    	String searchValue = textInputDialog("Make Choice","Choose Search Option","Enter Search Option","Choose to either search (all) or enter a warehouse/van name:");
+    	ArrayList<BikePart> alphaArray = Main.whf.getProgramFleet().alphaSort(searchValue);
+    	SortedTextArea.setText(" === Alphabetical Part Sort === ");
+    	for(BikePart loop : alphaArray) {
+    		SortedTextArea.appendText(loop.getAll() + "\n");
+    	}
     }
 
     @FXML
     void SortNumberParts(ActionEvent event) {
-
+    	String searchValue = textInputDialog("Make Choice","Choose Search Option","Enter Search Option","Choose to either search (all) or enter a warehouse/van name:");
+    	ArrayList<BikePart> numArray = Main.whf.getProgramFleet().numSort(searchValue);
+    	SortedTextArea.setText(" === Numerical Part Sort === ");
+    	for(BikePart loop : numArray) {
+    		SortedTextArea.appendText(loop.getAll() + "\n");
+    	}
     }
 
     @FXML
