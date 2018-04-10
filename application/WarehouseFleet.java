@@ -14,9 +14,9 @@ import java.util.regex.Pattern;
 /**
  * WarehouseFleet allows a user to control an arraylist of warehouses and manipulate or sort them as needed. On open, previous data is loaded from a .txt file, and on close this data is written back to the same file.
  * @author Matthew Pessolano
- *	Like the EmployeeRoster that will 
+ *
  */
-public class WarehouseFleet implements Serializable {
+public class WarehouseFleet implements Serializable{
 	
 	ArrayList<Warehouse> fleet;
 	
@@ -24,6 +24,7 @@ public class WarehouseFleet implements Serializable {
 	public WarehouseFleet(ArrayList<Warehouse> ifleet) {
 		fleet = ifleet;
 	}
+	public WarehouseFleet() { fleet = new ArrayList<Warehouse>(); fleet.add(new Warehouse("mainWarehouse"));}
 	/**
 	 * Get the existing fleet of Warehouses in a WHFleet object.
 	 * @return an ArrayList of Warehouses

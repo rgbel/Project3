@@ -31,7 +31,7 @@ public class Main extends Application {
 
 	public static final String databaseFile = "warehouseDB.txt";
 	
-	public static Employee activeUser;
+	public static Employee activeUser = null;
 	public static EmployeesAndWarehouses whf = new EmployeesAndWarehouses(new WarehouseFleet(),new EmployeeRoster()); //newdhjkwfh 
 
 	//public static WarehouseFleet programFleet = new WarehouseFleet(WarehouseFleet.fileToFleet(databaseFile));
