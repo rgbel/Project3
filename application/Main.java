@@ -7,7 +7,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 
 import javafx.stage.Stage;
-
+import roster.Employee;
+import roster.EmployeeRoster;
 import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
@@ -30,10 +31,10 @@ public class Main extends Application {
 
 	public static final String databaseFile = "warehouseDB.txt";
 	
+	public static Employee activeUser;
+	public static EmployeesAndWarehouses whf = new EmployeesAndWarehouses(new WarehouseFleet(),new EmployeeRoster()); //newdhjkwfh 
 
-	public static EmployeesAndWarehouses whf = new EmployeesAndWarehouses(); //newdhjkwfh 
-
-	public static WarehouseFleet programFleet = new WarehouseFleet(WarehouseFleet.fileToFleet(databaseFile));
+	//public static WarehouseFleet programFleet = new WarehouseFleet(WarehouseFleet.fileToFleet(databaseFile));
 
 	@Override
 
@@ -57,7 +58,7 @@ public class Main extends Application {
 
 			        public void run() {
 
-			            programFleet.fleetToFile(databaseFile);
+			            //programFleet.fleetToFile(databaseFile);
 
 			        }
 

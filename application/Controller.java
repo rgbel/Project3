@@ -8,6 +8,9 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import roster.Employee;
+import application.Main.*;
+
 
 public class Controller {
 
@@ -231,12 +234,45 @@ public class Controller {
 
     @FXML
     void LoginCheckUser(ActionEvent event) {
-
+    	for(Employee possible : Main.whf.programRoster.getRoster()) {
+    		if(inputUser.getText().equals(possible.getLoginInfo().getUsername()) && inputPwd.getText().equals(possible.getLoginInfo().getPassword())) {
+    			Main.activeUser = possible;
+    			switch(possible.getLoginInfo().getPermission()) {
+    			case(0):
+    				CreateTab.setDisable(false);
+    				DeleteTab.setDisable(false);
+    				ResetTab.setDisable(false);
+    			case(1):
+    				SellTab.setDisable(false);
+    				TransferTab.setDisable(false);
+    			case(2):
+    				InvoicesTab.setDisable(false);
+    				SearchTab.setDisable(false);
+    			case(3):
+    				EnterTab.setDisable(false);
+    				ReadTab.setDisable(false);
+    				SearchTab.setDisable(false);
+    			}
+				LoginButton.setDisable(true);
+				LogoutButton.setDisable(false);
+    		}
+    	}
     }
 
     @FXML
     void LogoutToHome(ActionEvent event) {
-
+    	CreateTab.setDisable(false);
+		DeleteTab.setDisable(false);
+		ResetTab.setDisable(false);
+		EnterTab.setDisable(false);
+		ReadTab.setDisable(false);
+		SearchTab.setDisable(false);
+		InvoicesTab.setDisable(false);
+		SellTab.setDisable(false);
+		TransferTab.setDisable(false);
+		LoginButton.setDisable(false);
+		LogoutButton.setDisable(true);
+		Main.activeUser = null;
     }
 
     @FXML
