@@ -462,7 +462,8 @@ public class Controller {
 
     @FXML
     void SellPart(ActionEvent event) {
-
+    	String fileName = getFileName("Select part sale file.");
+    	((SalesAsso) Main.activeUser).sellFromFile(fileName);
     }
 
     @FXML
