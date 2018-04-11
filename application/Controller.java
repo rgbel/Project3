@@ -278,20 +278,30 @@ public class Controller {
     }
 
     @FXML
+    /** 
+     * Iterate through the current roster of employees and remove the one that matches the indicated username, if found
+     * @param event - DeleteButton is pressed in Delete tab.
+     */
     void DeleteAccount(ActionEvent event) {
     	int index = 0;
     	// Loop through list of employees
-    	for(Employee possible : Main.whf.programRoster.getRoster()) {
-    		// Check each employee for if they match the password
-    		if(inputDelName.getText().equals(possible.getLoginInfo().getUsername())) {
-    			Main.whf.programRoster.getRoster().remove(index);
-    			break;
+    	if(!inputDelName.getText().equals("admin")) {
+    		for(Employee possible : Main.whf.programRoster.getRoster()) {
+    			// Check each employee for if they match the password
+    			if(inputDelName.getText().equals(possible.getLoginInfo().getUsername())) {
+    				Main.whf.programRoster.getRoster().remove(index);
+    				break;
+    			}
+    			index++;
     		}
-    	index++;
     	}
     }
 
     @FXML
+    /**
+     * The radio buttons for Quantity options are disabled.
+     * @param event - The Quantity radio button is de-selected.
+     */
     void DisableQuantOption(ActionEvent event) {
     	EqualQuantRadio.setDisable(true);
     	GreaterQuantRadio.setDisable(true);
@@ -299,6 +309,10 @@ public class Controller {
     }
 
     @FXML
+    /**
+     * The radio buttons for Quantity options are enabled.
+     * @param event - The Quantity radio button is selected.
+     */
     void EnableQuantOptions(ActionEvent event) {
     	EqualQuantRadio.setDisable(false);
     	GreaterQuantRadio.setDisable(false);
@@ -306,10 +320,15 @@ public class Controller {
     }
 
     @FXML
+    /**
+     * A part is added to the main warehouse using information provided by the user, if all text boxes contain some data.
+     * @param event - EnterButton is selected
+     */
     void EnterParts(ActionEvent event) {
-    	Main.whf.getProgramFleet().getFleet().get(0).getInv().add(new BikePart(inputEnterName.getText(),Integer.parseInt(inputEnterNum.getText()),Double.parseDouble(inputEnterListPrice.getText()),Double.parseDouble(inputEnterSalesPrice.getText()),Boolean.parseBoolean(inputEnterOnSale.getText()),Integer.parseInt(inputEnterQuant.getText())));
+    	if(inputEnterName.getText() != null && inputEnterName.getText() != null && inputEnterListPrice != null && inputEnterSalesPrice.getText() != null && inputEnterOnSale.getText() != null && inputEnterQuant.getText() != null) {
+    		Main.whf.getProgramFleet().getFleet().get(0).getInv().add(new BikePart(inputEnterName.getText(),Integer.parseInt(inputEnterNum.getText()),Double.parseDouble(inputEnterListPrice.getText()),Double.parseDouble(inputEnterSalesPrice.getText()),Boolean.parseBoolean(inputEnterOnSale.getText()),Integer.parseInt(inputEnterQuant.getText())));
+    	}
     }
-
     @FXML
     void EqualToQuant(ActionEvent event) {
 
@@ -331,6 +350,12 @@ public class Controller {
     }
 
     @FXML
+    /**
+     * Check the user's login credentials and search for which employee they correspond to. 
+     * If they exist, allow them access to all the tabs that an employee of their type should be able to see.
+     * Then, disable the login button and enable the logout button.
+     * @param event - LoginButton is selected.
+     */
     void LoginCheckUser(ActionEvent event) {
     	// Loop through list of employees
     	for(Employee possible : Main.whf.programRoster.getRoster()) {
@@ -359,13 +384,18 @@ public class Controller {
     				break;
     			}
     			// Enable logout, disable login
-				LoginButton.setDisable(true);
-				LogoutButton.setDisable(false);
+			LoginButton.setDisable(true);
+			LogoutButton.setDisable(false);
+			break;
     		}
     	}
     }
 
     @FXML
+    /**
+     * All tabs except Home are disabled, the active user is removed, and the login button is re-activated.
+     * @param event - LogoutButton is selected
+     */
     void LogoutToHome(ActionEvent event) {
     	// Disable all tabs, enable login
     	CreateTab.setDisable(true);
@@ -386,7 +416,14 @@ public class Controller {
     void ReadFileAction(ActionEvent event) {
 
     }
-
+    /**
+     * Using an entered input, the entire warehouse/van fleet is searched for the indicated part.
+     * Depending on the radio button selected, different search options are used.
+     * If quantity is selected, the radio buttons indicating =,<,> to choose what range to use.
+     * If found, pertinent information is printed about the part as well as which warehouse it was first encountered.
+     * Otherwise, an error message is returned.
+     * @param event - The SearchButton is selected.
+     */
     @FXML
     void SearchParts(ActionEvent event) {
     	if(PartNameRadio.isSelected()) {
@@ -461,12 +498,21 @@ public class Controller {
     }
 
     @FXML
+    /**
+     * A file is selected, and the contents are read in order to create a SalesInvoice, assuming that the sales van is correct and the van has teh proper contents.
+     * @param event - SellButton is selected
+     */
     void SellPart(ActionEvent event) {
     	String fileName = getFileName("Select part sale file.");
     	((SalesAsso) Main.activeUser).sellFromFile(fileName);
     }
 
     @FXML
+    /**
+     * The user is prompted with a choice of what warehouse to sort or all.
+     * The indicated warehouse(s) is sorted alphabetically by name and printed to the SortedTextArea.
+     * @param event - SortNameButton is selected
+     */
     void SortNameParts(ActionEvent event) {
     	String searchValue = textInputDialog("Make Choice","Choose Search Option","Enter Search Option","Choose to either search (all) or enter a warehouse/van name:");
     	ArrayList<BikePart> alphaArray = Main.whf.getProgramFleet().alphaSort(searchValue);
@@ -477,6 +523,11 @@ public class Controller {
     }
 
     @FXML
+    /**
+     * The user is prompted with a choice of what warehouse to sort or all.
+     * The indicated warehouse(s) is sorted numerically by ID number and printed to the SortedTextArea.
+     * @param event - SortNumberButton is selected
+     */
     void SortNumberParts(ActionEvent event) {
     	String searchValue = textInputDialog("Make Choice","Choose Search Option","Enter Search Option","Choose to either search (all) or enter a warehouse/van name:");
     	ArrayList<BikePart> numArray = Main.whf.getProgramFleet().numSort(searchValue);
