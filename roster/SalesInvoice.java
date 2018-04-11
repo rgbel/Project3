@@ -2,6 +2,7 @@ package roster;
 
 
 
+import java.io.Serializable;
 import java.text.DateFormat;
 
 import java.text.SimpleDateFormat;
@@ -16,7 +17,7 @@ import application.BikePart;
 
 
 
-public class SalesInvoice {
+public class SalesInvoice implements Serializable{
 
 
 
@@ -55,7 +56,13 @@ public class SalesInvoice {
 		
 
 	}
-
+	public SalesInvoice(String customerStore, String customerReceived, SalesAsso employeeSold) {
+		this.customerStore = customerStore;
+		this.customerReceived = customerReceived;
+		this.partsSold = new ArrayList<BikePart>();
+		this.employeeSold = employeeSold;
+		this.sellDate = new Date();
+	}
 	
 
 	public SalesInvoice(String customerStore, String customerReceived, ArrayList<BikePart> partsSold, SalesAsso employeeSold, long date) {

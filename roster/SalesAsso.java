@@ -1,16 +1,19 @@
 package roster;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import java.util.Date;
+import java.util.Scanner;
 
-
-
+import application.BikePart;
 import application.Warehouse;
 
 
 
-public class SalesAsso extends Employee {
+public class SalesAsso extends Employee implements Serializable {
 
 	
 
@@ -92,6 +95,44 @@ public class SalesAsso extends Employee {
 
 		return commission * comRate;
 
+	}
+	public boolean sellFromFile(String fileName) {
+		// File format:
+		// vanName
+		// store,customer
+		// partName,partNumber,partLP,partSP,partQuanToSell
+		// ...
+		File partFile = new File(fileName);
+		try {
+			Scanner in = new Scanner(partFile);
+			if(in.nextLine().equalsIgnoreCase(this.van.getName())) {
+				String[] info = in.nextLine().split(",");
+				SalesInvoice newIV = new SalesInvoice(info[0],info[1],this);
+				while(in.hasNextLine()) {
+					String[] bpInfo = in.nextLine().split(",");
+					// If part found in van, sell it and add to invoice
+					for(BikePart possible : this.getVan().getInv()) {
+						if(possible.getName().equals(bpInfo[0])) {
+							newIV.getParts().add(new BikePart(bpInfo[0],
+												Integer.parseInt(bpInfo[1]),
+												Double.parseDouble(bpInfo[2]),
+												Double.parseDouble(bpInfo[3]),
+												Boolean.parseBoolean(bpInfo[4]),
+												Integer.parseInt(bpInfo[5])));
+							possible.setStock(possible.getStock() - Integer.parseInt(bpInfo[5]));
+							break;
+						}
+					}
+				}
+			this.addInvoice(newIV);
+			return true;
+			}
+			else {
+				return false;
+			}
+		} catch (FileNotFoundException e) {
+			return false;
+		}
 	}
 
 	 

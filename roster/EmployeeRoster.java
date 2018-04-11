@@ -43,7 +43,7 @@ public class EmployeeRoster implements Serializable{
 
 	
 
-	public EmployeeRoster() { roster = new ArrayList<Employee>(); }
+	public EmployeeRoster() { roster = new ArrayList<Employee>(); roster.add(new SystemAdmin("Default","Admin","555-555-5555","admin@bikeparts.org",new LoginAccount("admin","minda",0)));}
 
 	public EmployeeRoster(ArrayList<Employee> roster) { this.roster = roster; }
 
@@ -111,7 +111,7 @@ public ArrayList<Employee> getRoster() { return roster; }
 					register.add(lastSA);
 				}
 				else {
-					lastSA = new SalesAsso(info[0],info[1],info[2],info[3], new LoginAccount(info[4],info[5],Integer.parseInt(info[6])), Main.programFleet.getFleet().get(Main.programFleet.isWarehouse(info[7])));
+					lastSA = new SalesAsso(info[0],info[1],info[2],info[3], new LoginAccount(info[4],info[5],Integer.parseInt(info[6])), Main.whf.getProgramFleet().getFleet().get(Main.whf.getProgramFleet().isWarehouse(info[7])));
 				}
 			}
 			in.close();	
@@ -451,7 +451,7 @@ public ArrayList<Employee> getRoster() { return roster; }
 				// If it does, just increase the stock.
 
 				// Otherwise, add a new part.
-				Warehouse mainWare = Main.programFleet.getFleet().get(0);
+				Warehouse mainWare = Main.whf.getProgramFleet().getFleet().get(0);
 				for(BikePart part : van.getInv()) {
 					int indexMain = mainWare.getPart(part.getName());
 
