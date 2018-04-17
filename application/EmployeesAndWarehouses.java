@@ -2,11 +2,6 @@ package application;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-/**
- * Singleton Pattern
- */
 
 import roster.EmployeeRoster;
 
@@ -37,14 +32,8 @@ public class EmployeesAndWarehouses implements Serializable{
 		this.programRoster = programRoster;
 	}
 
-	/**
-	 * Now have all the employees (with all invoices..) and warehouses (with all parts)
-	 * read this class when end program,,,,,
-	 */
+
 	
-	
-	
-	
-	
+
 	
 }

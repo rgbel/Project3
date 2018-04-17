@@ -158,12 +158,13 @@
                            <GridPane.margin>
                               <Insets left="20.0" />
                            </GridPane.margin></Text>
-                        <Button fx:id="ReadButton" mnemonicParsing="false" onAction="#ReadFileAction" text="Read" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Button fx:id="ReadButton" mnemonicParsing="false" onAction="#ReadFileAction" text="Read" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                         <TextField fx:id="inputWH" GridPane.halignment="RIGHT">
                            <GridPane.margin>
                               <Insets left="230.0" right="20.0" />
                            </GridPane.margin>
                         </TextField>
+                        <TextArea fx:id="ReadTB" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                </children></AnchorPane>
@@ -247,33 +248,38 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <GridPane prefHeight="361.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <GridPane prefHeight="220.0" prefWidth="600.0" AnchorPane.bottomAnchor="151.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="323.0" minWidth="10.0" prefWidth="293.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="308.0" minWidth="10.0" prefWidth="307.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date:" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date:" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets top="-80.0" />
+                           </GridPane.margin></Text>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="End Date:" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                            <GridPane.margin>
-                              <Insets bottom="20.0" />
+                              <Insets bottom="60.0" />
                            </GridPane.margin></Text>
                         <TextField fx:id="inputStart" onAction="#GenerateCommission" promptText="e.g. yyyy-mm-dd" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
-                              <Insets bottom="10.0" right="20.0" />
+                              <Insets bottom="80.0" right="20.0" />
                            </GridPane.margin>
                         </TextField>
                         <TextField fx:id="inputEnd" onAction="#GenerateCommission" promptText="e.g. yyyy-mm-dd" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                            <GridPane.margin>
-                              <Insets bottom="20.0" right="20.0" />
+                              <Insets bottom="60.0" right="20.0" />
                            </GridPane.margin>
                         </TextField>
-                        <Button fx:id="GenerateCommission" mnemonicParsing="false" onAction="#GenerateCommission" text="Generate Commission" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Button fx:id="GenerateCommission" mnemonicParsing="false" onAction="#GenerateCommission" text="Generate Commission" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="-70.0" />
+                           </GridPane.margin></Button>
                         <TextField fx:id="SearchInvoicesBy" onAction="#GenerateCommission" promptText="e.g. minda" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets right="20.0" />
@@ -287,16 +293,14 @@
                               <Insets left="20.0" top="20.0" />
                            </GridPane.margin>
                         </RadioButton>
-                        <RadioButton fx:id="CustomerRadio" mnemonicParsing="false" text="Customer" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+                        <RadioButton fx:id="CustomerRadio" mnemonicParsing="false" text="Customer" toggleGroup="$SearchInvoices" GridPane.halignment="LEFT" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets left="20.0" top="50.0" />
                            </GridPane.margin>
-                           <toggleGroup>
-                              <ToggleGroup fx:id="Sea" />
-                           </toggleGroup>
                         </RadioButton>
                      </children>
                   </GridPane>
+                  <TextArea fx:id="SalesTB" editable="false" layoutX="8.0" layoutY="219.0" prefHeight="146.0" prefWidth="583.0" />
                </children>
             </AnchorPane>
         </content>
@@ -343,6 +347,7 @@
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select file to transfer parts:" GridPane.halignment="CENTER" />
                         <Button fx:id="TransferButton" mnemonicParsing="false" onAction="#TransferFile" text="Transfer" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <TextArea fx:id="TransferTextArea" prefHeight="200.0" prefWidth="531.0" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                </children>

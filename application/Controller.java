@@ -14,6 +14,7 @@ import roster.*;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Optional;
 
 import application.Main.*;
@@ -68,6 +69,9 @@ public class Controller {
 
     @FXML
     private TextField inputWH;
+    
+    @FXML
+    private TextArea ReadTB;
 
     @FXML
     private Tab SearchTab;
@@ -131,6 +135,9 @@ public class Controller {
 
     @FXML
     private RadioButton CustomerRadio;
+    
+    @FXML
+    private TextArea SalesTB;
 
     @FXML
     private ToggleGroup Sea;
@@ -146,6 +153,9 @@ public class Controller {
 
     @FXML
     private Button TransferButton;
+    
+    @FXML
+    private TextArea TransferTextArea;
 
     @FXML
     private Tab CreateTab;
@@ -242,6 +252,7 @@ public class Controller {
      * @param event - ResetButton is pressed in Reset Password tab
      */
     void ChangePassword(ActionEvent event) {
+    	//tested
     	// Loop through list of employees
     	for(Employee possible : Main.whf.programRoster.getRoster()) {
     		// Check each employee for if they match the password
@@ -336,7 +347,23 @@ public class Controller {
 
     @FXML
     void GenerateCommission(ActionEvent event) {
-
+    	ArrayList<SalesInvoice> invoiceList;
+    	String[] startData = inputStart.getText().split("-");
+    	@SuppressWarnings("deprecation")
+		Date startDate = new Date(Integer.parseInt(startData[0]),Integer.parseInt(startData[1]),Integer.parseInt(startData[2]));
+    	
+    	String[] endData = inputEnd.getText().split("-");
+    	@SuppressWarnings("deprecation")
+		Date endDate = new Date(Integer.parseInt(endData[0]),Integer.parseInt(endData[1]),Integer.parseInt(endData[2]));
+    	
+    	if(SalesAssoRadio.isSelected())
+    		invoiceList = Main.whf.getProgramRoster().getInvoiceBySalesAssoBetweenDates(SearchInvoicesBy.getText(),startDate,endDate);
+    	else  
+    		invoiceList = Main.whf.getProgramRoster().getInvoiceByCustomerBetweenDates(SearchInvoicesBy.getText(), startDate, endDate);
+    	for(SalesInvoice loopInvoice : invoiceList) {
+    		SalesTB.appendText(loopInvoice.toString());
+    	}
+    	
     }
 
     @FXML
@@ -414,8 +441,26 @@ public class Controller {
 
     @FXML
     void ReadFileAction(ActionEvent event) {
-
-    }
+    	// This should use the read method from project 2
+    	String warehouseChoice = inputWH.getText();
+		if(warehouseChoice != null) {
+			int indexW = Main.whf.programFleet.isWarehouse(warehouseChoice);
+			if (indexW > -1) {
+				String filename = getFileName("Open File");
+				if(filename != null) {
+					ReadTB.appendText(filename + "\n");
+					Main.whf.programFleet.getFleet().get(indexW).updateInventory(filename);
+					ReadTB.appendText("Update complete.\n");
+				} else
+					ReadTB.appendText("No file selected.\n");
+			}
+			else
+				ReadTB.appendText("Warehouse choice not found in fleet.\n" + indexW);
+		}
+		else
+			ReadTB.appendText("No warehouse name entered.\n");
+	}
+    
     /**
      * Using an entered input, the entire warehouse/van fleet is searched for the indicated part.
      * Depending on the radio button selected, different search options are used.
@@ -426,11 +471,24 @@ public class Controller {
      */
     @FXML
     void SearchParts(ActionEvent event) {
+    	
+    	// Method branches into 5 possibilities:
+    	//	1: Part name search.
+    	//	2: Part number search.
+    	// 	3: Part quantity search with...
+    	//		A: Equals sign chosen.
+    	//		B: Greater sign chosen.
+    	//		C: Lesser sign chosen.
+    	
+    	// Part name search
+    	boolean found = false;
     	if(PartNameRadio.isSelected()) {
     		String searchValue = textInputDialog("Part Name","Search Part Name","Enter Part Name","Enter the part name to search:");
     		for(Warehouse loopWH : Main.whf.programFleet.getFleet()) {
-    			for(BikePart loopPart : loopWH.getInv()) {
-    				if(searchValue.equalsIgnoreCase(loopPart.getName())) {
+    			int index = loopWH.getPart(searchValue);
+    			if(index > -1) {
+    				BikePart loopPart = loopWH.getInv().get(index);
+    					found = true;
     					SortedTextArea.setText("Part found.\n");
     					SortedTextArea.appendText("Part number: " + loopPart.getNumber() + "\n");
     					SortedTextArea.appendText("Part price: " + loopPart.getActivePrice() + "\n");
@@ -438,16 +496,17 @@ public class Controller {
     					SortedTextArea.appendText("Found in warehouse/van: " + loopWH.getName() + "\n");
     					break;
     				}
-    			}
-    		}
-    		SortedTextArea.setText("Part not found in fleet.\n");
+    			
+    		} if(!found)
+    			SortedTextArea.setText("Part not found in fleet.\n");
     	}
+    	// Part number search
     	else if(PartNumberRadio.isSelected()) {
-    		if(PartNameRadio.isSelected()) {
         		int searchValue = Integer.parseInt(textInputDialog("Part Number","Search Part Number","Enter Part Number","Enter the part number to search:"));
         		for(Warehouse loopWH : Main.whf.programFleet.getFleet()) {
         			for(BikePart loopPart : loopWH.getInv()) {
         				if(searchValue == loopPart.getNumber()) {
+        					found = true;
         					SortedTextArea.setText("Part found.\n");
         					SortedTextArea.appendText("Part name: " + loopPart.getName() + "\n");
         					SortedTextArea.appendText("Part price: " + loopPart.getActivePrice() + "\n");
@@ -457,41 +516,54 @@ public class Controller {
         				}
         			}
         		}
-        		SortedTextArea.setText("Part not found in fleet.\n");
-        	}	
+        		 if(!found)
+         			SortedTextArea.setText("Part not found in fleet.\n");
     	}
+    	// Quantity selected
     	else if(QuantityRadio.isSelected()) {
     		int searchValue = Integer.parseInt(textInputDialog("Part Quantity","Search Part Quantity","Enter Part Quantity","Enter the part quantity to search:"));
     		if(searchValue > -1) {
+    			// Equals selected
     			if(EqualQuantRadio.isSelected()) {
     				for(Warehouse loopWH : Main.whf.programFleet.getFleet()) {
             			for(BikePart loopPart : loopWH.getInv()) {
             				if(searchValue == loopPart.getStock()) {
+            					found = true;
             					SortedTextArea.appendText(loopPart.getAll() + "\n");
             					SortedTextArea.appendText("Found in warehouse/van: " + loopWH.getName() + "\n");
             				}
             			}
     				}
+    				 if(!found)
+    	         			SortedTextArea.setText("Matching part not found in fleet.\n");
     			}
+    			// Greater selected
     			else if(GreaterQuantRadio.isSelected()) {
     				for(Warehouse loopWH : Main.whf.programFleet.getFleet()) {
             			for(BikePart loopPart : loopWH.getInv()) {
             				if(searchValue > loopPart.getStock()) {
+            					found = true;
             					SortedTextArea.appendText(loopPart.getAll() + "\n");
             					SortedTextArea.appendText("Found in warehouse/van: " + loopWH.getName() + "\n");
             				}
             			}
     				}
+    				if(!found)
+	         			SortedTextArea.setText("Matching part not found in fleet.\n");
     			}
+    			// Lesser selected
     			else if(LesserRadioQuant.isSelected()) {
     				for(Warehouse loopWH : Main.whf.programFleet.getFleet()) {
             			for(BikePart loopPart : loopWH.getInv()) {
             				if(searchValue < loopPart.getStock()) {
+            					found = true;
             					SortedTextArea.appendText(loopPart.getAll() + "\n");
             					SortedTextArea.appendText("Found in warehouse/van: " + loopWH.getName() + "\n");
             				}
             			}
     				}
+    				if(!found)
+	         			SortedTextArea.setText("Matching part not found in fleet.\n");
     			}
     		}
     	}
@@ -516,7 +588,7 @@ public class Controller {
     void SortNameParts(ActionEvent event) {
     	String searchValue = textInputDialog("Make Choice","Choose Search Option","Enter Search Option","Choose to either search (all) or enter a warehouse/van name:");
     	ArrayList<BikePart> alphaArray = Main.whf.getProgramFleet().alphaSort(searchValue);
-    	SortedTextArea.setText(" === Alphabetical Part Sort === ");
+    	SortedTextArea.setText(" === Alphabetical Part Sort === \n");
     	for(BikePart loop : alphaArray) {
     		SortedTextArea.appendText(loop.getAll() + "\n");
     	}
@@ -531,15 +603,29 @@ public class Controller {
     void SortNumberParts(ActionEvent event) {
     	String searchValue = textInputDialog("Make Choice","Choose Search Option","Enter Search Option","Choose to either search (all) or enter a warehouse/van name:");
     	ArrayList<BikePart> numArray = Main.whf.getProgramFleet().numSort(searchValue);
-    	SortedTextArea.setText(" === Numerical Part Sort === ");
+    	SortedTextArea.setText(" === Numerical Part Sort === \n");
     	for(BikePart loop : numArray) {
     		SortedTextArea.appendText(loop.getAll() + "\n");
     	}
     }
 
     @FXML
+    /** The user is prompted to select a file and, if valid, parts will be transferred between two vans.
+     *  This transfer will also only happen if the sales employee owns one of the two vans.
+     * @param event - TransferButton is pressed.
+     */
     void TransferFile(ActionEvent event) {
-
+    	String fileName = getFileName("Select transfer file.");
+		if(fileName != null) {
+			if(Main.whf.programFleet.transferParts(fileName, ((SalesAsso)Main.activeUser))) {
+				TransferTextArea.setText("Transfer complete");
+			}
+			else {
+				TransferTextArea.setText("Transfer failed: sales associate does not own either van.");
+			}
+		} else {
+			TransferTextArea.setText("Transfer failed: file not selected.");
+		}
     }
 
 }

@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import roster.SalesAsso;
+
 /**
  * WarehouseFleet allows a user to control an arraylist of warehouses and manipulate or sort them as needed. On open, previous data is loaded from a .txt file, and on close this data is written back to the same file.
  * @author Matthew Pessolano
@@ -293,7 +295,7 @@ public class WarehouseFleet implements Serializable{
 	 * Next, it will take the array of bike parts and add them to the receive warehouse.
 	 * @param fileName, The transfer file to be read.
 	 */
-	public void transferParts(String fileName) {
+	public boolean transferParts(String fileName, SalesAsso employee) {
 		
 		File partFile = new File(fileName);
 		// Try / Catch in case of empty file or mistake on user's behalf (prevent full error-out)
@@ -308,7 +310,9 @@ public class WarehouseFleet implements Serializable{
 			String[] warehouseData = bpLine.split(",");
 			takeW = this.getFleet().get(this.isWarehouse(warehouseData[0]));
 			receiveW = this.getFleet().get(this.isWarehouse(warehouseData[1]));
-			
+			if(employee.getVan().getName() != takeW.getName() && employee.getVan().getName() != receiveW.getName()) {
+				return false;
+			}
 			// Handles part removal; puts part values into takeData<>
 			while (bikeScanner.hasNextLine()) {
 				bpLine = bikeScanner.nextLine();
@@ -356,6 +360,7 @@ public class WarehouseFleet implements Serializable{
 			if (notFound)
 				receiveW.getInv().add(loopPart);
 		}
+	return true;
 	}
 	/**
 	 * This method is mostly used for internal testing by taking a fleet and printing out the current active Warehouses and their BikeParts.

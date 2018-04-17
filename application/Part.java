@@ -1,6 +1,8 @@
 package application;
 
-public class Part implements PartInterface {
+import java.io.Serializable;
+
+public class Part implements PartInterface, Serializable{
 	String name;
 	int number;
 	
@@ -9,8 +11,7 @@ public class Part implements PartInterface {
 		number = inumber;
 	}
 	public Part() {
-		String name;
-		int number;
+
 	}
 	
 	/** Sets the name value of the Part to the newName value 
