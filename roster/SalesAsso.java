@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 import application.BikePart;
+import application.Main;
 import application.Warehouse;
 
 
@@ -32,7 +33,7 @@ public class SalesAsso extends Employee implements Serializable {
 		super(nameFirst, nameLast, phoneNumber, email, loginInfo);
 
 		this.van = van;
-
+		Main.whf.getProgramFleet().getFleet().add(this.van);
 		this.getLoginInfo().changePermission(1);
 
 		invoices = new ArrayList<SalesInvoice>();
@@ -100,7 +101,7 @@ public class SalesAsso extends Employee implements Serializable {
 		// File format:
 		// vanName
 		// store,customer
-		// partName,partNumber,partLP,partSP,partQuanToSell
+		// partName,partNumber,partLP,partSP,partState,partQuanToSell
 		// ...
 		File partFile = new File(fileName);
 		try {

@@ -1,6 +1,8 @@
 package roster;
 
-public class SystemAdmin extends Employee{
+import java.io.Serializable;
+
+public class SystemAdmin extends Employee implements Serializable{
 
 	public SystemAdmin(String nameFirst, String nameLast, String phoneNumber, String email, LoginAccount loginInfo) {
 		super(nameFirst, nameLast, phoneNumber, email, loginInfo);

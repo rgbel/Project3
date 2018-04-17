@@ -1,6 +1,8 @@
 package roster;
 
-public class OfficeMan extends Employee {
+import java.io.Serializable;
+
+public class OfficeMan extends Employee implements Serializable{
 	
 	public OfficeMan (String nameFirst, String nameLast, String phoneNumber, String email, LoginAccount loginInfo) {
 

@@ -1,8 +1,8 @@
-package roster;
+ package roster;
 
 import java.io.Serializable;
 
-public class LoginAccount implements Serializable {
+public class LoginAccount implements Serializable{
 
 	
 

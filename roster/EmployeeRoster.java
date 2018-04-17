@@ -568,8 +568,45 @@ public ArrayList<Employee> getRoster() { return roster; }
 		return invoices;
 
 	}
+	public ArrayList<SalesInvoice> getInvoiceBySalesAsso(String employeeName){
+
+		ArrayList<SalesInvoice> invoices = new ArrayList<SalesInvoice>();
+
+		for(Employee loop : this.roster) {
+
+			if(loop.getLoginInfo().getPermission() == 1) {
+
+				SalesAsso notLoop = (SalesAsso) loop;
+				if(notLoop.getNameFirst().equals(employeeName) || notLoop.getNameLast().equals(employeeName)) {
+					for(SalesInvoice testInvoice : notLoop.getInvoices()) {
 
 
+						invoices.add(testInvoice);
+
+					}
+
+				}
+
+			}
+
+		}
+
+		return invoices;
+
+	}
+	public ArrayList<SalesInvoice> getInvoiceBySalesAssoBetweenDates(String employeeName, Date start, Date end){
+
+		ArrayList<SalesInvoice> invoices = getInvoiceBySalesAsso(employeeName);
+		for(SalesInvoice invoice : invoices) {
+			if(!invoice.getDate().after(start) || !invoice.getDate().before(end)) {
+
+				invoices.remove(invoice);
+
+			}
+		}
+		return invoices;
+
+	}
 
 
 

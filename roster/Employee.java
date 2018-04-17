@@ -2,8 +2,7 @@ package roster;
 
 import java.io.Serializable;
 
-
-public abstract class Employee implements Serializable {
+public abstract class Employee implements Serializable{
 
 
 

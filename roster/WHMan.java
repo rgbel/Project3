@@ -1,6 +1,8 @@
 package roster;
 
-public class WHMan extends Employee {
+import java.io.Serializable;
+
+public class WHMan extends Employee implements Serializable{
 
 	public WHMan(String nameFirst, String nameLast, String phoneNumber, String email, LoginAccount loginInfo) {
 		
