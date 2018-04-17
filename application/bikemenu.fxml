@@ -41,7 +41,7 @@
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
                         <TextField fx:id="inputUser" maxWidth="-Infinity" prefHeight="31.0" prefWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="inputPwd" maxWidth="-Infinity" prefWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                        <TextField fx:id="inputPwd" maxWidth="-Infinity" onAction="#LoginCheckUser" prefWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
                         <Button fx:id="LoginButton" mnemonicParsing="false" onAction="#LoginCheckUser" text="Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets />

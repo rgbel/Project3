@@ -355,7 +355,7 @@ public class Controller {
     	String[] endData = inputEnd.getText().split("-");
     	@SuppressWarnings("deprecation")
 		Date endDate = new Date(Integer.parseInt(endData[0]),Integer.parseInt(endData[1]),Integer.parseInt(endData[2]));
-    	
+
     	if(SalesAssoRadio.isSelected())
     		invoiceList = Main.whf.getProgramRoster().getInvoiceBySalesAssoBetweenDates(SearchInvoicesBy.getText(),startDate,endDate);
     	else  
@@ -363,6 +363,8 @@ public class Controller {
     	for(SalesInvoice loopInvoice : invoiceList) {
     		SalesTB.appendText(loopInvoice.toString());
     	}
+    	if(invoiceList.isEmpty())
+        	SalesTB.setText("No invoices match current date.");
     	
     }
 
