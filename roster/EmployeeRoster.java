@@ -595,14 +595,27 @@ public ArrayList<Employee> getRoster() { return roster; }
 
 	}
 	public ArrayList<SalesInvoice> getInvoiceBySalesAssoBetweenDates(String employeeName, Date start, Date end){
+		ArrayList<SalesInvoice> invoices = new ArrayList<SalesInvoice>();
 
-		ArrayList<SalesInvoice> invoices = getInvoiceBySalesAsso(employeeName);
-		for(SalesInvoice invoice : invoices) {
-			if(!invoice.getDate().after(start) || !invoice.getDate().before(end)) {
+		for(Employee loop : this.roster) {
 
-				invoices.remove(invoice);
+			if(loop.getLoginInfo().getPermission() == 1) {
+
+				SalesAsso notLoop = (SalesAsso) loop;
+				if(notLoop.getNameFirst().equals(employeeName) || notLoop.getNameLast().equals(employeeName)) {
+					for(SalesInvoice testInvoice : notLoop.getInvoices()) {
+						if(testInvoice.getDate().after(start) && !testInvoice.getDate().before(end)) {
+
+						invoices.add(testInvoice);
+						
+						}
+
+					}
+
+				}
 
 			}
+
 		}
 		return invoices;
 
