@@ -604,7 +604,7 @@ public ArrayList<Employee> getRoster() { return roster; }
 				SalesAsso notLoop = (SalesAsso) loop;
 				if(notLoop.getNameFirst().equals(employeeName) || notLoop.getNameLast().equals(employeeName)) {
 					for(SalesInvoice testInvoice : notLoop.getInvoices()) {
-						if(testInvoice.getDate().after(start) && !testInvoice.getDate().before(end)) {
+						if(testInvoice.getDate().after(start) && testInvoice.getDate().before(end)) {
 
 						invoices.add(testInvoice);
 						

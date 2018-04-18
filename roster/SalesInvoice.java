@@ -105,15 +105,15 @@ public class SalesInvoice implements Serializable{
 
 		output += ("Sales Invoice for " + this.customerStore + ", " + dateFormat.format(sellDate) + "\n");
 
-		output += String.format("%-14s %-16s %-10s %-14s %-16s\n","Part Name","Part Number","Price","Quantity","Total");
+		output += String.format("%-20s %-16s %-10s %-14s %-16s\n","Part Name","Part Number","Price","Quantity","Total");
 
 		for(BikePart loop : partsSold) {
 
-			output += String.format("%-14s %-16s %-10s %-14s %-16s\n",loop.getName(),loop.getNumber(),loop.getActivePrice(),loop.getStock(),loop.getTotalCost());
+			output += String.format("%-20s %-16s %-10s %-14s %-16s\n",loop.getName(),loop.getNumber(),loop.getActivePrice(),loop.getStock(),loop.getTotalCost());
 
 		}
 
-		output += String.format("%-14s %-16s %-10s %-14s %-16s\n","Total Cost:","","","",this.getProfit());
+		output += String.format("%-20s %-16s %-10s %-14s %-16s\n","Total Cost:","","","",this.getProfit());
 
 		output += ("Sold by: " + this.getEmployee().getNameFirst() + " " + this.getEmployee().getNameLast() + "\n");
 

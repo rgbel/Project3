@@ -82,20 +82,30 @@ public class SalesAsso extends Employee implements Serializable {
 
 	
 
-	public double getComBetween(Date start, Date end) {
-
-		ArrayList<SalesInvoice> between = getDatesBetween(start, end);
-
-		double commission = 0;
-
-		for(SalesInvoice tempInvoice : between) {
-
-			commission += tempInvoice.getProfit();
-
+	public static double getComBetween(String name, Date start, Date end) {
+		SalesAsso employ = null;
+		for(Employee pos : Main.whf.getProgramRoster().getRoster()) {
+			if(pos.getLoginInfo().getPermission() == 1) {
+				if(name.equals(pos.getNameFirst()) || name.equals(pos.getNameLast())) {
+					employ = (SalesAsso)pos;
+					break;
+				}
+			}
 		}
+		if(employ!=null) {
+			ArrayList<SalesInvoice> between = employ.getDatesBetween(start, end);
 
-		return commission * comRate;
+			double commission = 0;
 
+			for(SalesInvoice tempInvoice : between) {
+
+				commission += tempInvoice.getProfit();
+
+			}
+
+			return Math.round(commission * comRate);
+		}
+		return 0;
 	}
 	public boolean sellFromFile(String fileName) {
 		// File format:
