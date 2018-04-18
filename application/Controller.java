@@ -2,6 +2,8 @@ package application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
@@ -15,6 +17,7 @@ import roster.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Optional;
 
 import application.Main.*;
@@ -338,6 +341,11 @@ public class Controller {
     void EnterParts(ActionEvent event) {
     	if(inputEnterName.getText() != null && inputEnterName.getText() != null && inputEnterListPrice != null && inputEnterSalesPrice.getText() != null && inputEnterOnSale.getText() != null && inputEnterQuant.getText() != null) {
     		Main.whf.getProgramFleet().getFleet().get(0).getInv().add(new BikePart(inputEnterName.getText(),Integer.parseInt(inputEnterNum.getText()),Double.parseDouble(inputEnterListPrice.getText()),Double.parseDouble(inputEnterSalesPrice.getText()),Boolean.parseBoolean(inputEnterOnSale.getText()),Integer.parseInt(inputEnterQuant.getText())));
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Success");
+    		alert.setHeaderText("Part added");
+    		alert.setContentText("Part has been successfully added to the main warehouse.");
+    		alert.showAndWait();
     	}
     }
     @FXML
@@ -349,23 +357,23 @@ public class Controller {
     void GenerateCommission(ActionEvent event) {
     	ArrayList<SalesInvoice> invoiceList;
     	String[] startData = inputStart.getText().split("-");
-    	@SuppressWarnings("deprecation")
-		Date startDate = new Date(Integer.parseInt(startData[0]),Integer.parseInt(startData[1]),Integer.parseInt(startData[2]));
+    	Date startDate = new GregorianCalendar(Integer.parseInt(startData[0]),Integer.parseInt(startData[1]), Integer.parseInt(startData[2])).getTime();
     	
     	String[] endData = inputEnd.getText().split("-");
-    	@SuppressWarnings("deprecation")
-		Date endDate = new Date(Integer.parseInt(endData[0]),Integer.parseInt(endData[1]),Integer.parseInt(endData[2]));
+		Date endDate =  new GregorianCalendar(Integer.parseInt(endData[0]),Integer.parseInt(endData[1]),Integer.parseInt(endData[2])).getTime();
 
-    	if(SalesAssoRadio.isSelected())
+    	if(SalesAssoRadio.isSelected()) {
+    		SalesTB.setText("Commission for total sales invoices between specified dates: " + SalesAsso.getComBetween(SearchInvoicesBy.getText(),startDate,endDate) + "0");
+    		SalesTB.appendText("\n==================================================================================");
     		invoiceList = Main.whf.getProgramRoster().getInvoiceBySalesAssoBetweenDates(SearchInvoicesBy.getText(),startDate,endDate);
-    	else  
+    	}else  
     		invoiceList = Main.whf.getProgramRoster().getInvoiceByCustomerBetweenDates(SearchInvoicesBy.getText(), startDate, endDate);
     	for(SalesInvoice loopInvoice : invoiceList) {
     		SalesTB.appendText(loopInvoice.toString());
     	}
     	if(invoiceList.isEmpty())
-        	SalesTB.setText("No invoices match current date.");
-    	
+        	SalesTB.setText("No invoices match current date.\n");
+    		
     }
 
     @FXML
@@ -386,6 +394,9 @@ public class Controller {
      * @param event - LoginButton is selected.
      */
     void LoginCheckUser(ActionEvent event) {
+    	if(LoginButton.isDisabled()) {
+    		LogoutToHome(event);
+    	}
     	// Loop through list of employees
     	for(Employee possible : Main.whf.programRoster.getRoster()) {
     		// Check each employee for if they match the password
@@ -578,7 +589,19 @@ public class Controller {
      */
     void SellPart(ActionEvent event) {
     	String fileName = getFileName("Select part sale file.");
-    	((SalesAsso) Main.activeUser).sellFromFile(fileName);
+    	if(((SalesAsso) Main.activeUser).sellFromFile(fileName)) {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Success");
+    		alert.setHeaderText("Parts solds");
+    		alert.setContentText("Parts have been sold from indicated van.");
+    		alert.showAndWait();
+    	} else {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Failure");
+    		alert.setHeaderText("Parts not sold");
+    		alert.setContentText("Parts have not been sold. Please check that current sales associate has ownership of van being sold from.");
+    		alert.showAndWait();
+    	}
     }
 
     @FXML
