@@ -573,10 +573,23 @@ public class Controller {
      */
 
     void CreateAccount(ActionEvent event) {
+
     	boolean found = false;
-    	for(Employee possible : Main.whf.programRoster.getRoster()) {
-    	if (inputFirstName.getText() != null && inputLastName.getText() != null && inputPhone.getText() != null && inputEmail.getText() != null && inputUsername.getText() != null && inputPassword.getText() != null && inputPermission.getText() != null && !inputUsername.getText().equals(possible.getLoginInfo().getUsername())) {
-    		
+    	if (!inputFirstName.getText().isEmpty() && !inputLastName.getText().isEmpty() && !inputPhone.getText().isEmpty() && !inputEmail.getText().isEmpty() && !inputUsername.getText().isEmpty() && !inputPassword.getText().isEmpty() && !inputPermission.getText().isEmpty() ) {
+        	for(Employee possible : Main.whf.programRoster.getRoster()) {
+        		if(inputUsername.getText().equals(possible.getLoginInfo().getUsername())) {
+        			Alert alert = new Alert(AlertType.INFORMATION);
+
+            		alert.setTitle("Failure");
+
+            		alert.setHeaderText("User not entered");
+
+            		alert.setContentText("New user has not been created. Username already exists. Please check that current roster of employees.");
+
+            		alert.showAndWait();
+            		return;
+        		}
+        	}
     		switch(inputPermission.getText()) {
 
         	case("0"):
@@ -607,7 +620,7 @@ public class Controller {
 
         	}
 
-    		if(!found) {
+
     		Alert alert = new Alert(AlertType.INFORMATION);
 
     		alert.setTitle("Success");
@@ -617,17 +630,7 @@ public class Controller {
     		alert.setContentText(inputFirstName.getText() + " " + inputLastName.getText() + " has been successfully added to the employee roster.");
 
     		alert.showAndWait();
-    		}else {
-    			Alert alert = new Alert(AlertType.INFORMATION);
 
-        		alert.setTitle("Failure");
-
-        		alert.setHeaderText("User not entered");
-
-        		alert.setContentText("New user has not been created. Username already exists. Please check that current roster of employees.");
-
-        		alert.showAndWait();
-    		}
     		
     	} //if text fields full
     	
@@ -644,7 +647,7 @@ public class Controller {
     		alert.showAndWait();
     	}
     	
-    	}//for everyone in roster
+    	//for everyone in roster
 
 
     }
