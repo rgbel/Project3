@@ -281,7 +281,7 @@
                            <GridPane.margin>
                               <Insets bottom="-70.0" />
                            </GridPane.margin></Button>
-                        <TextField fx:id="SearchInvoicesBy" onAction="#GenerateCommission" promptText="e.g. minda" GridPane.columnIndex="1">
+                        <TextField fx:id="SearchInvoicesBy" onAction="#GenerateCommission" promptText="e.g. admin" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets right="20.0" />
                            </GridPane.margin>
@@ -436,7 +436,7 @@
                               <Insets right="90.0" top="153.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="inputPermission" maxWidth="-Infinity" prefWidth="300.0" promptText="e.g. 0 = admin, 1= associate, 2 = office, 3 = warehouse" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+                        <TextField fx:id="inputPermission" maxWidth="-Infinity" prefWidth="300.0" promptText="e.g. 0 = admin, 1= sa, 2 = om, 3 = wm" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets right="90.0" top="183.0" />
                            </GridPane.margin>
@@ -471,7 +471,7 @@
                               <Insets left="40.0" />
                            </GridPane.margin></Text>
                         <Button fx:id="DeleteButton" mnemonicParsing="false" onAction="#DeleteAccount" text="Delete Account" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <TextField fx:id="inputDelName" promptText="e.g. minda (username)">
+                        <TextField fx:id="inputDelName" promptText="e.g. admin (username)">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -504,7 +504,7 @@
                               <Insets left="40.0" />
                            </GridPane.margin></Text>
                         <Button fx:id="ResetButton" mnemonicParsing="false" onAction="#ChangePassword" text="Reset Password" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <TextField fx:id="inputUserName" promptText="e.g. minda (username)">
+                        <TextField fx:id="inputUserName" promptText="e.g. admin (username)">
                            <GridPane.margin>
                               <Insets left="300.0" right="30.0" />
                            </GridPane.margin>
