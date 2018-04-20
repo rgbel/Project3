@@ -1,0 +1,6 @@
+van2
+Gusty's Shop,Gusty
+toy_bike,111110,1.11,1.10,false,30
+broken_bike,0191231,0.99,0.05,true,10
+less_broken_bike,0191232,1.99,0.10,false,5
+pink_bike,9080913,41.76,34.21,true,10

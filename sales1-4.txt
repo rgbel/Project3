@@ -1,0 +1,5 @@
+van1
+Rachel's Shop,Rachel
+wheel_offroad,1150021,51.31,45.99,true,4
+wheel_onroad,1150022,43.79,31.99,false,2
+used_gear,6094192,12.78,11.41,true,5
