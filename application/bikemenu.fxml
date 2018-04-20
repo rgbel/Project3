@@ -1,596 +1,1191 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
+
 <?import javafx.geometry.Insets?>
+
 <?import javafx.scene.control.Button?>
+
 <?import javafx.scene.control.RadioButton?>
+
 <?import javafx.scene.control.Tab?>
+
 <?import javafx.scene.control.TabPane?>
+
 <?import javafx.scene.control.TextArea?>
+
 <?import javafx.scene.control.TextField?>
+
 <?import javafx.scene.control.TitledPane?>
+
 <?import javafx.scene.control.ToggleGroup?>
+
 <?import javafx.scene.layout.AnchorPane?>
+
 <?import javafx.scene.layout.ColumnConstraints?>
+
 <?import javafx.scene.layout.GridPane?>
+
 <?import javafx.scene.layout.RowConstraints?>
+
 <?import javafx.scene.text.Font?>
+
 <?import javafx.scene.text.Text?>
 
+
+
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+
   <tabs>
+
     <Tab fx:id="HomeTab" text="Home">
+
       <content>
+
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+
                <children>
+
                   <TitledPane animated="false" prefHeight="340.0" prefWidth="600.0" text="Welcome, User" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
                     <content>
+
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+
                     </content>
+
                   </TitledPane>
+
                   <GridPane layoutX="-1.0" layoutY="-1.0" prefHeight="361.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
                     <columnConstraints>
+
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+
                     </columnConstraints>
+
                     <rowConstraints>
+
                       <RowConstraints />
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                     </rowConstraints>
+
                      <children>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+
                         <TextField fx:id="inputUser" maxWidth="-Infinity" prefHeight="19.0" prefWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
                         <TextField fx:id="inputPwd" maxWidth="-Infinity" onAction="#LoginCheckUser" prefWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+
                         <Button fx:id="LoginButton" mnemonicParsing="false" onAction="#LoginCheckUser" text="Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+
                            <GridPane.margin>
+
                               <Insets />
+
                            </GridPane.margin>
+
                         </Button>
+
                         <Button fx:id="LogoutButton" disable="true" mnemonicParsing="false" onAction="#LogoutToHome" text="Logout" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+
                            <GridPane.margin>
+
                               <Insets right="20.0" />
+
                            </GridPane.margin>
+
                         </Button>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bike Part Distributorship" textAlignment="CENTER" wrappingWidth="596.13671875" GridPane.rowIndex="1">
+
                            <font>
+
                               <Font name="Edwardian Script ITC" size="53.0" />
+
                            </font>
+
                         </Text>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Employee, please enter your login info below" textAlignment="CENTER" wrappingWidth="599.13671875" GridPane.rowIndex="1">
+
                            <GridPane.margin>
+
                               <Insets top="100.0" />
+
                            </GridPane.margin>
+
                            <font>
+
                               <Font name="Ebrima" size="15.0" />
+
                            </font>
+
                         </Text>
+
                      </children>
+
                   </GridPane>
+
                </children></AnchorPane>
+
       </content>
+
     </Tab>
+
       <Tab fx:id="EnterTab" disable="true" text="Enter">
+
         <content>
+
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+
                <children>
+
                   <GridPane layoutX="34.0" layoutY="23.0" prefHeight="340.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
                     <columnConstraints>
+
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+
                     </columnConstraints>
+
                     <rowConstraints>
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                     </rowConstraints>
+
                      <children>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Part Name:" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets left="20.0" top="20.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity:" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets left="20.0" top="170.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="On sale?:" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets left="20.0" top="140.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="List Price:" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets left="20.0" top="80.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sales Price:" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets left="20.0" top="110.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Part Number:" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets left="20.0" top="50.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <TextField fx:id="inputEnterListPrice" maxWidth="-Infinity" prefWidth="300.0" promptText="e.g. 25.00" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets right="20.0" top="70.0" />
+
                            </GridPane.margin>
+
                         </TextField>
+
                         <TextField fx:id="inputEnterSalesPrice" maxWidth="-Infinity" prefWidth="300.0" promptText="e.g. 20.00" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets right="20.0" top="100.0" />
+
                            </GridPane.margin>
+
                         </TextField>
+
                         <TextField fx:id="inputEnterOnSale" maxWidth="-Infinity" prefWidth="300.0" promptText="e.g. true" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets right="20.0" top="130.0" />
+
                            </GridPane.margin>
+
                         </TextField>
+
                         <TextField fx:id="inputEnterQuant" maxWidth="-Infinity" prefWidth="300.0" promptText="e.g. 50" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets right="20.0" top="160.0" />
+
                            </GridPane.margin>
+
                         </TextField>
+
                         <TextField fx:id="inputEnterNum" maxWidth="-Infinity" prefWidth="300.0" promptText="e.g. 123456789" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets right="20.0" top="40.0" />
+
                            </GridPane.margin>
+
                         </TextField>
+
                         <TextField fx:id="inputEnterName" maxWidth="-Infinity" prefWidth="300.0" promptText="e.g. spoke" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets right="20.0" top="10.0" />
+
                            </GridPane.margin>
+
                         </TextField>
+
                         <Button fx:id="EnterButton" mnemonicParsing="false" onAction="#EnterParts" text="Enter" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+
                            <GridPane.margin>
+
                               <Insets bottom="70.0" right="140.0" />
+
                            </GridPane.margin>
+
                         </Button>
+
                      </children>
+
                   </GridPane>
+
                </children>
+
             </AnchorPane>
+
         </content>
+
       </Tab>
+
     <Tab fx:id="ReadTab" disable="true" text="Read">
+
       <content>
+
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+
                <children>
+
                   <GridPane prefHeight="361.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
                     <columnConstraints>
+
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+
                     </columnConstraints>
+
                     <rowConstraints>
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                     </rowConstraints>
+
                      <children>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Warehouse or van name:" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+
                            <GridPane.margin>
+
                               <Insets bottom="40.0" left="20.0" />
+
                            </GridPane.margin></Text>
+
                         <Button fx:id="ReadButton" mnemonicParsing="false" onAction="#ReadFileAction" text="Read" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+
                            <GridPane.margin>
+
                               <Insets top="60.0" />
+
                            </GridPane.margin></Button>
+
                         <TextField fx:id="inputWH" prefHeight="25.0" prefWidth="305.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+
                            <GridPane.margin>
+
                               <Insets bottom="40.0" left="230.0" right="20.0" />
+
                            </GridPane.margin>
+
                         </TextField>
+
                         <TextArea fx:id="ReadTB" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Information will be read from a provided text file, loading in a new batch of parts into the indicated warehouse or van. If the part already exists, its values will be changed based on the new part and the two quantites will be added together." textAlignment="CENTER" wrappingWidth="580.13671875">
+
                            <GridPane.margin>
+
                               <Insets bottom="-30.0" right="-20.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reading In New Bike Parts" textAlignment="CENTER" wrappingWidth="601.13671875">
+
                            <GridPane.margin>
+
                               <Insets bottom="70.0" />
+
                            </GridPane.margin>
+
                            <font>
+
                               <Font name="System Bold" size="23.0" />
+
                            </font>
+
                         </Text>
+
                      </children>
+
                   </GridPane>
+
                </children></AnchorPane>
+
       </content>
+
     </Tab>
+
       <Tab fx:id="SearchTab" disable="true" text="Search">
+
         <content>
+
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+
                <children>
+
                   <GridPane prefHeight="361.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
                     <columnConstraints>
+
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+
                     </columnConstraints>
+
                     <rowConstraints>
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                     </rowConstraints>
+
                      <children>
+
                         <RadioButton fx:id="PartNameRadio" mnemonicParsing="false" onAction="#DisableQuantOption" selected="true" text="Part Name" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets left="20.0" top="20.0" />
+
                            </GridPane.margin>
+
                            <toggleGroup>
+
                               <ToggleGroup fx:id="SearchRadioToggle" />
+
                            </toggleGroup>
+
                         </RadioButton>
+
                         <RadioButton fx:id="PartNumberRadio" mnemonicParsing="false" onAction="#DisableQuantOption" text="Part Number" toggleGroup="$SearchRadioToggle" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets left="20.0" top="50.0" />
+
                            </GridPane.margin>
+
                         </RadioButton>
+
                         <RadioButton fx:id="QuantityRadio" mnemonicParsing="false" onAction="#EnableQuantOptions" text="Quantity" toggleGroup="$SearchRadioToggle" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets left="20.0" top="80.0" />
+
                            </GridPane.margin>
+
                         </RadioButton>
+
                         <TextArea fx:id="SortedTextArea" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="159.0" prefWidth="580.0" GridPane.valignment="BOTTOM">
+
                            <GridPane.margin>
+
                               <Insets left="10.0" right="10.0" />
+
                            </GridPane.margin>
+
                         </TextArea>
+
                         <Button fx:id="SearchButton" mnemonicParsing="false" onAction="#SearchParts" text="Search" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+
                            <GridPane.margin>
+
                               <Insets bottom="40.0" left="50.0" />
+
                            </GridPane.margin>
+
                         </Button>
+
                         <Button fx:id="SortNameButton" mnemonicParsing="false" onAction="#SortNameParts" text="Sort Name" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+
                            <GridPane.margin>
+
                               <Insets bottom="40.0" />
+
                            </GridPane.margin>
+
                         </Button>
+
                         <Button fx:id="SortNumberButton" mnemonicParsing="false" onAction="#SortNumberParts" text="Sort Number" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+
                            <GridPane.margin>
+
                               <Insets bottom="40.0" right="50.0" />
+
                            </GridPane.margin>
+
                         </Button>
+
                         <RadioButton fx:id="EqualQuantRadio" disable="true" mnemonicParsing="false" onAction="#EqualToQuant" selected="true" text="=" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets top="20.0" />
+
                            </GridPane.margin>
+
                            <toggleGroup>
+
                               <ToggleGroup fx:id="QuantToggleGroup" />
+
                            </toggleGroup>
+
                         </RadioButton>
+
                         <RadioButton fx:id="GreaterQuantRadio" disable="true" mnemonicParsing="false" onAction="#GreaterThanQuant" text="&gt;" toggleGroup="$QuantToggleGroup" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets top="50.0" />
+
                            </GridPane.margin>
+
                         </RadioButton>
+
                         <RadioButton fx:id="LesserRadioQuant" disable="true" mnemonicParsing="false" onAction="#LessThanQuant" text="&lt;" toggleGroup="$QuantToggleGroup" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets top="80.0" />
+
                            </GridPane.margin>
+
                         </RadioButton>
+
                      </children>
+
                   </GridPane>
+
                </children>
+
             </AnchorPane>
+
         </content>
+
       </Tab>
+
       <Tab fx:id="InvoicesTab" disable="true" text="View Sales">
+
         <content>
+
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+
                <children>
+
                   <GridPane prefHeight="220.0" prefWidth="600.0" AnchorPane.bottomAnchor="151.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
                     <columnConstraints>
+
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="323.0" minWidth="10.0" prefWidth="293.0" />
+
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="308.0" minWidth="10.0" prefWidth="307.0" />
+
                     </columnConstraints>
+
                     <rowConstraints>
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                     </rowConstraints>
+
                      <children>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date:" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+
                            <GridPane.margin>
+
                               <Insets top="-80.0" />
+
                            </GridPane.margin></Text>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="End Date:" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+
                            <GridPane.margin>
+
                               <Insets bottom="60.0" />
+
                            </GridPane.margin></Text>
+
                         <TextField fx:id="inputStart" onAction="#GenerateCommission" promptText="e.g. yyyy-mm-dd" GridPane.columnIndex="1" GridPane.rowIndex="1">
+
                            <GridPane.margin>
+
                               <Insets bottom="80.0" right="20.0" />
+
                            </GridPane.margin>
+
                         </TextField>
+
                         <TextField fx:id="inputEnd" onAction="#GenerateCommission" promptText="e.g. yyyy-mm-dd" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+
                            <GridPane.margin>
+
                               <Insets bottom="60.0" right="20.0" />
+
                            </GridPane.margin>
+
                         </TextField>
+
                         <Button fx:id="GenerateCommission" mnemonicParsing="false" onAction="#GenerateCommission" text="Generate Commission" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+
                            <GridPane.margin>
+
                               <Insets bottom="-70.0" />
+
                            </GridPane.margin></Button>
-                        <TextField fx:id="SearchInvoicesBy" onAction="#GenerateCommission" promptText="e.g. minda" GridPane.columnIndex="1">
+
+                        <TextField fx:id="SearchInvoicesBy" onAction="#GenerateCommission" promptText="e.g. admin" GridPane.columnIndex="1">
+
                            <GridPane.margin>
+
                               <Insets right="20.0" />
+
                            </GridPane.margin>
+
                         </TextField>
+
                         <RadioButton fx:id="SalesAssoRadio" mnemonicParsing="false" selected="true" text="Sales Associate" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+
                            <toggleGroup>
+
                               <ToggleGroup fx:id="SearchInvoices" />
+
                            </toggleGroup>
+
                            <GridPane.margin>
+
                               <Insets left="20.0" top="20.0" />
+
                            </GridPane.margin>
+
                         </RadioButton>
+
                         <RadioButton fx:id="CustomerRadio" mnemonicParsing="false" text="Customer" toggleGroup="$SearchInvoices" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets left="20.0" top="50.0" />
+
                            </GridPane.margin>
+
                         </RadioButton>
+
                      </children>
+
                   </GridPane>
+
                   <TextArea fx:id="SalesTB" editable="false" layoutX="8.0" layoutY="219.0" prefHeight="146.0" prefWidth="583.0">
+
                      <font>
+
                         <Font name="Courier New" size="12.0" />
+
                      </font>
+
                   </TextArea>
+
                </children>
+
             </AnchorPane>
+
         </content>
+
       </Tab>
+
       <Tab fx:id="SellTab" disable="true" text="Sell">
+
         <content>
+
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+
                <children>
+
                   <GridPane prefHeight="361.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
                     <columnConstraints>
+
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+
                     </columnConstraints>
+
                     <rowConstraints>
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                     </rowConstraints>
+
                      <children>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select a file to sell:" GridPane.halignment="CENTER">
+
                            <GridPane.margin>
+
                               <Insets left="30.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <Button fx:id="SellButton" mnemonicParsing="false" onAction="#SellPart" text="Sell" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+
                      </children>
+
                   </GridPane>
+
                </children>
+
             </AnchorPane>
+
         </content>
+
       </Tab>
+
       <Tab fx:id="TransferTab" disable="true" text="Transfer">
+
         <content>
+
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+
                <children>
+
                   <GridPane prefHeight="361.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
                     <columnConstraints>
+
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+
                     </columnConstraints>
+
                     <rowConstraints>
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                     </rowConstraints>
+
                      <children>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select file to transfer parts:" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+
                            <GridPane.margin>
+
                               <Insets bottom="45.0" />
+
                            </GridPane.margin></Text>
+
                         <Button fx:id="TransferButton" mnemonicParsing="false" onAction="#TransferFile" text="Transfer" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+
                            <GridPane.margin>
+
                               <Insets top="60.0" />
+
                            </GridPane.margin></Button>
+
                         <TextArea fx:id="TransferTextArea" prefHeight="200.0" prefWidth="531.0" GridPane.rowIndex="2" />
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Transfer parts from one van to another using a text file. Note: you must be the owner of one of the two vans involved in order to complete this process. Parts can also be transferred from the main warehouse to the user's van. Parts in transfer files that exceed the current quantity inside the van will not be removed." textAlignment="CENTER" wrappingWidth="603.13671875">
+
                            <GridPane.margin>
+
                               <Insets top="30.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Transfer Part Between Warehouses or Vans" textAlignment="CENTER" wrappingWidth="600.13671875">
+
                            <GridPane.margin>
+
                               <Insets bottom="70.0" />
+
                            </GridPane.margin>
+
                            <font>
+
                               <Font name="System Bold" size="23.0" />
+
                            </font>
+
                         </Text>
+
                      </children>
+
                   </GridPane>
+
                </children>
+
             </AnchorPane>
+
         </content>
+
       </Tab>
+
       <Tab fx:id="CreateTab" disable="true" text="Create Account">
+
         <content>
+
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+
                <children>
+
                   <GridPane prefHeight="361.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
                     <columnConstraints>
+
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+
                     </columnConstraints>
+
                     <rowConstraints>
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                     </rowConstraints>
+
                      <children>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets left="20.0" top="130.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets left="20.0" top="160.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Permission Level:" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets left="20.0" top="190.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets bottom="30.0" left="20.0" top="100.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number:" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets bottom="60.0" left="20.0" top="70.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets bottom="90.0" left="20.0" top="40.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets bottom="120.0" left="20.0" top="10.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <TextField fx:id="inputFirstName" maxWidth="-Infinity" prefWidth="300.0" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets right="90.0" top="3.0" />
+
                            </GridPane.margin>
+
                         </TextField>
+
                         <TextField fx:id="inputLastName" maxWidth="-Infinity" prefWidth="300.0" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets right="90.0" top="33.0" />
+
                            </GridPane.margin>
+
                         </TextField>
+
                         <TextField fx:id="inputPhone" maxWidth="-Infinity" prefWidth="300.0" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets right="90.0" top="63.0" />
+
                            </GridPane.margin>
+
                         </TextField>
+
                         <TextField fx:id="inputEmail" maxWidth="-Infinity" prefWidth="300.0" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets right="90.0" top="93.0" />
+
                            </GridPane.margin>
+
                         </TextField>
+
                         <TextField fx:id="inputUsername" maxWidth="-Infinity" prefWidth="300.0" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets right="90.0" top="123.0" />
+
                            </GridPane.margin>
+
                         </TextField>
+
                         <TextField fx:id="inputPassword" maxWidth="-Infinity" prefWidth="300.0" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets right="90.0" top="153.0" />
+
                            </GridPane.margin>
+
                         </TextField>
-                        <TextField fx:id="inputPermission" maxWidth="-Infinity" prefWidth="300.0" promptText="e.g. 0 = admin, 1= associate, 2 = office, 3 = warehouse" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+
+                        <TextField fx:id="inputPermission" maxWidth="-Infinity" prefWidth="300.0" promptText="e.g. 0 = admin, 1 = sa, 2 = om, 3 = wm" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+
                            <GridPane.margin>
+
                               <Insets right="90.0" top="183.0" />
+
                            </GridPane.margin>
+
                            <opaqueInsets>
+
                               <Insets />
+
                            </opaqueInsets>
+
                         </TextField>
+
                         <Button fx:id="CreateAccountButton" mnemonicParsing="false" onAction="#CreateAccount" text="Create Account" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+
                            <GridPane.margin>
+
                               <Insets bottom="40.0" />
+
                            </GridPane.margin>
+
                         </Button>
+
                      </children>
+
                   </GridPane>
+
                </children>
+
             </AnchorPane>
+
         </content>
+
       </Tab>
+
       <Tab fx:id="DeleteTab" disable="true" text="Delete Account">
+
         <content>
+
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+
                <children>
+
                   <GridPane prefHeight="361.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
                     <columnConstraints>
+
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+
                     </columnConstraints>
+
                     <rowConstraints>
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                     </rowConstraints>
+
                      <children>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select an account:" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+
                            <GridPane.margin>
+
                               <Insets left="40.0" />
+
                            </GridPane.margin></Text>
+
                         <Button fx:id="DeleteButton" mnemonicParsing="false" onAction="#DeleteAccount" text="Delete Account" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <TextField fx:id="inputDelName" promptText="e.g. minda (username)" GridPane.rowIndex="1">
+
+                        <TextField fx:id="inputDelName" promptText="e.g. admin (username)" GridPane.rowIndex="1">
+
                            <opaqueInsets>
+
                               <Insets />
+
                            </opaqueInsets>
+
                            <GridPane.margin>
+
                               <Insets left="250.0" right="30.0" />
+
                            </GridPane.margin>
+
                         </TextField>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="This tab is used for deleting accounts that are no longer in use. Be careful, as this process cannot be undone. If a sales associate is removed, his or her van will be emptied into the main warehouse. Adminstrators cannot be removed from system." textAlignment="CENTER" wrappingWidth="504.076171875">
+
                            <GridPane.margin>
+
                               <Insets bottom="-30.0" left="40.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Delete an Account" textAlignment="CENTER" wrappingWidth="600.13671875">
+
                            <GridPane.margin>
+
                               <Insets bottom="70.0" />
+
                            </GridPane.margin>
+
                            <font>
+
                               <Font name="System Bold" size="23.0" />
+
                            </font>
+
                         </Text>
+
                      </children>
+
                   </GridPane>
+
                </children>
+
             </AnchorPane>
+
         </content>
+
       </Tab>
+
       <Tab fx:id="ResetTab" disable="true" text="Reset Password">
+
         <content>
+
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+
                <children>
+
                   <GridPane prefHeight="361.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
                     <columnConstraints>
+
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+
                     </columnConstraints>
+
                     <rowConstraints>
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
                     </rowConstraints>
+
                      <children>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select an account:" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+
                            <GridPane.margin>
+
                               <Insets left="40.0" />
+
                            </GridPane.margin></Text>
+
                         <Button fx:id="ResetButton" mnemonicParsing="false" onAction="#ChangePassword" text="Reset Password" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <TextField fx:id="inputUserName" promptText="e.g. minda (username)" GridPane.rowIndex="1">
+
+                        <TextField fx:id="inputUserName" promptText="e.g. admin (username)" GridPane.rowIndex="1">
+
                            <GridPane.margin>
+
                               <Insets left="300.0" right="30.0" />
+
                            </GridPane.margin>
+
                         </TextField>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="If a user forgets their password, enter their username below to reset it. You will prompted for a new password; make sure to write it down and supply it to the owner of the account." textAlignment="CENTER" wrappingWidth="579.13671875">
+
                            <GridPane.margin>
+
                               <Insets top="30.0" />
+
                            </GridPane.margin>
+
                         </Text>
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reset a Password" textAlignment="CENTER" wrappingWidth="600.13671875">
+
                            <GridPane.margin>
+
                               <Insets bottom="70.0" />
+
                            </GridPane.margin>
+
                            <font>
+
                               <Font name="System Bold" size="23.0" />
+
                            </font>
+
                         </Text>
+
                      </children>
+
                   </GridPane>
+
                </children>
+
             </AnchorPane>
+
         </content>
+
       </Tab>
+
   </tabs>
+
 </TabPane>
