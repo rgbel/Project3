@@ -1,0 +1,9 @@
+crankArm,800001,4.12,4.11,true,12000
+seatPost,400001,10.55,9.54,false,9012
+chainStay,300001,2.11,2.09,false,11000
+brakeLever,200001,4.04,2.02,false,1000
+pivots,900001,50.14,9.09,true,8800
+saddle,50005,12.94,6.51,true,5500
+topTube,4040404,9.99,8.87,true,1001
+thruAxle,1231239,100.99,99.99,true,9009
+bike_childrens,6050901,61.49,55.81,false,501

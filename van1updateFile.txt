@@ -1,0 +1,10 @@
+trail_bike,1234567907,4567.89,3456.78,true,25
+WTB_saddle,1234567890,50.00,40.00,false,351
+mensShortsMedium,1234567913,100.00,89.00,true,590
+womensShortsMedium,1234567914,100.00,89.00,true,591
+zarminComputer,1234567908,543.21,480.00,false,100
+wheel_offroad,1150021,51.31,45.99,true,412
+wheel_onroad,1150022,43.79,31.99,false,189
+used_gear,6094192,12.78,11.41,true,509
+race_bike,1234567909,4900.00,4850.99,true,100
+saddle_rails,900142,6.58,4.21,false,258

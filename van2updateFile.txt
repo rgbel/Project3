@@ -1,0 +1,8 @@
+bike_adult,6050902,161.49,155.81,false,91
+unicycle,90015151,90.51,87.13,true,600
+toy_bike,111110,1.11,1.10,false,9000
+broken_bike,0191231,0.99,0.05,true,1000
+less_broken_bike,0191232,1.99,0.10,false,61
+pink_bike,9080913,41.76,34.21,true,80
+blue_bike,4444414,41.76,34.21,false,47
+tricycle,77171231,90.41,41.41,true,190
