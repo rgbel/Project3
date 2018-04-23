@@ -574,9 +574,22 @@ public class Controller {
 
     void CreateAccount(ActionEvent event) {
 
-    	for(Employee possible : Main.whf.programRoster.getRoster()) {
-    	if (inputFirstName.getText() != null && inputLastName.getText() != null && inputPhone.getText() != null && inputEmail.getText() != null && inputUsername.getText() != null && inputPassword.getText() != null && inputPermission.getText() != null && !inputUsername.getText().equals(possible.getLoginInfo().getUsername())) {
-    		
+    	boolean found = false;
+    	if (!inputFirstName.getText().isEmpty() && !inputLastName.getText().isEmpty() && !inputPhone.getText().isEmpty() && !inputEmail.getText().isEmpty() && !inputUsername.getText().isEmpty() && !inputPassword.getText().isEmpty() && !inputPermission.getText().isEmpty() ) {
+        	for(Employee possible : Main.whf.programRoster.getRoster()) {
+        		if(inputUsername.getText().equals(possible.getLoginInfo().getUsername())) {
+        			Alert alert = new Alert(AlertType.INFORMATION);
+
+            		alert.setTitle("Failure");
+
+            		alert.setHeaderText("User not entered");
+
+            		alert.setContentText("New user has not been created. Username already exists. Please check that current roster of employees.");
+
+            		alert.showAndWait();
+            		return;
+        		}
+        	}
     		switch(inputPermission.getText()) {
 
         	case("0"):
@@ -607,7 +620,7 @@ public class Controller {
 
         	}
 
-        
+
     		Alert alert = new Alert(AlertType.INFORMATION);
 
     		alert.setTitle("Success");
@@ -617,6 +630,7 @@ public class Controller {
     		alert.setContentText(inputFirstName.getText() + " " + inputLastName.getText() + " has been successfully added to the employee roster.");
 
     		alert.showAndWait();
+
     		
     	} //if text fields full
     	
@@ -628,12 +642,12 @@ public class Controller {
 
     		alert.setHeaderText("User not entered");
 
-    		alert.setContentText("New user has not been created. Please check that current roster of employees and/or all fields.");
+    		alert.setContentText("New user has not been created. Please check that all fields are completed.");
 
     		alert.showAndWait();
     	}
     	
-    	}//for everyone in roster
+    	//for everyone in roster
 
 
     }
@@ -658,7 +672,7 @@ public class Controller {
 
         	// Loop through list of employees
 
-
+        	boolean found = false;
     		for(Employee possible : Main.whf.programRoster.getRoster()) {
 
     			// Check each employee for if they match the password
@@ -666,7 +680,7 @@ public class Controller {
     			if(inputDelName.getText().equals(possible.getLoginInfo().getUsername())) { //fix because still gives success window when user is not present in roster
 
     				Main.whf.programRoster.getRoster().remove(index);
-
+    				found = true;
     				break;
 
     			}
@@ -675,7 +689,7 @@ public class Controller {
 
     		}
 
-        	
+        	if(found) {
     		Alert alert = new Alert(AlertType.INFORMATION);
 
     		alert.setTitle("Success");
@@ -685,9 +699,21 @@ public class Controller {
     		alert.setContentText("'" + inputDelName.getText() + "' has been successfully removed from the employee roster.");
 
     		alert.showAndWait();
+        	} else { //if not an employee
+        		Alert alert = new Alert(AlertType.INFORMATION);
+
+        		alert.setTitle("Failure");
+
+        		alert.setHeaderText("User not removed");
+
+        		alert.setContentText("User, '" + inputDelName.getText() + "' has not been removed. Please check that current roster of employees.");
+
+        		alert.showAndWait();
+        	}
     		
     	}
-    	else {
+    	else { //if admin
+    		
     		
     		Alert alert = new Alert(AlertType.INFORMATION);
 
@@ -700,29 +726,6 @@ public class Controller {
     		alert.showAndWait();
     		
     	}
-/*    	int index = 0;
-
-    	// Loop through list of employees
-
-    	if(!inputDelName.getText().equals("admin")) {
-
-    		for(Employee possible : Main.whf.programRoster.getRoster()) {
-
-    			// Check each employee for if they match the password
-
-    			if(inputDelName.getText().equals(possible.getLoginInfo().getUsername())) {
-
-    				Main.whf.programRoster.getRoster().remove(index);
-
-    				break;
-
-    			}
-
-    			index++;
-
-    		}
-
-    	}*/
 
     }
 
@@ -839,12 +842,13 @@ public class Controller {
     		invoiceList = Main.whf.getProgramRoster().getInvoiceBySalesAssoBetweenDates(SearchInvoicesBy.getText(),startDate,endDate);
 
     	}else  
-
+    		SalesTB.setText("");
     		invoiceList = Main.whf.getProgramRoster().getInvoiceByCustomerBetweenDates(SearchInvoicesBy.getText(), startDate, endDate);
 
     	for(SalesInvoice loopInvoice : invoiceList) {
 
     		SalesTB.appendText(loopInvoice.toString());
+    		SalesTB.appendText("\n");
 
     	}
 
@@ -1074,7 +1078,7 @@ public class Controller {
 
     void SearchParts(ActionEvent event) {
 
-    	
+    	SortedTextArea.setText("");
 
     	// Method branches into 5 possibilities:
 
@@ -1331,6 +1335,12 @@ public class Controller {
     	String searchValue = textInputDialog("Make Choice","Choose Search Option","Enter Search Option","Choose to either search (all) or enter a warehouse/van name:");
 
     	ArrayList<BikePart> alphaArray = Main.whf.getProgramFleet().alphaSort(searchValue);
+    	
+    	if(alphaArray.isEmpty()) {
+    		SortedTextArea.setText("Incorrect or empty van: please check that parts or van has been added.");
+    		return;
+    	}
+
 
     	SortedTextArea.setText(" === Alphabetical Part Sort === \n");
 
@@ -1361,6 +1371,11 @@ public class Controller {
     	String searchValue = textInputDialog("Make Choice","Choose Search Option","Enter Search Option","Choose to either search (all) or enter a warehouse/van name:");
 
     	ArrayList<BikePart> numArray = Main.whf.getProgramFleet().numSort(searchValue);
+    	
+    	if(numArray.isEmpty()) {
+    		SortedTextArea.setText("Incorrect or empty van: please check that parts or van has been added.");
+    		return;
+    	}
 
     	SortedTextArea.setText(" === Numerical Part Sort === \n");
 
